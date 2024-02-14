@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1ulie8kq8hvq"]
+[gd_scene load_steps=5 format=3 uid="uid://c1ulie8kq8hvq"]
 
-[ext_resource type="Texture2D" uid="uid://cs30keuot1irx" path="res://ass/black-1072366_1920.jpg" id="1_t5ylk"]
-[ext_resource type="Script" path="res://Quit.gd" id="2_j3qto"]
-[ext_resource type="Texture2D" uid="uid://c6f4oqrmp6o2f" path="res://ass/poker_hand.png" id="3_yo4pl"]
+[ext_resource type="Texture2D" uid="uid://cs30keuot1irx" path="res://ass/black-1072366_1920.jpg" id="1_rdcew"]
+[ext_resource type="Script" path="res://Quit.gd" id="2_5e5mo"]
+[ext_resource type="Script" path="res://scenes/SinglePlayer.gd" id="2_12doa"]
+[ext_resource type="Texture2D" uid="uid://c6f4oqrmp6o2f" path="res://ass/poker_hand.png" id="3_pwh7q"]
 
 [node name="MarginContainer" type="MarginContainer"]
 offset_right = 40.0
@@ -10,9 +11,9 @@ offset_bottom = 40.0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_t5ylk")
+texture = ExtResource("1_rdcew")
 
-[node name="Play" type="Button" parent="Background"]
+[node name="SinglePlayer" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -25,10 +26,11 @@ offset_right = 100.0
 offset_bottom = -190.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play"
+text = "Singleplayer"
 icon_alignment = 1
+script = ExtResource("2_12doa")
 
-[node name="Options" type="Button" parent="Background"]
+[node name="Multiplayer" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,8 +43,7 @@ offset_right = 100.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Options
-"
+text = "Multiplayer"
 
 [node name="Quit" type="Button" parent="Background"]
 layout_mode = 1
@@ -58,7 +59,7 @@ offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
-script = ExtResource("2_j3qto")
+script = ExtResource("2_5e5mo")
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
 layout_mode = 0
@@ -66,4 +67,4 @@ offset_left = 722.0
 offset_top = 66.0
 offset_right = 1208.0
 offset_bottom = 268.0
-texture = ExtResource("3_yo4pl")
+texture = ExtResource("3_pwh7q")

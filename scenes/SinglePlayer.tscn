@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b88dv4vkljkq3"]
+
+[node name="SinglePlayer" type="Node2D"]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(111, 111)
+offset_left = 208.0
+offset_top = 76.0
+offset_right = 319.0
+offset_bottom = 187.0
+text = "AAAAAAAAAAAAAAAAA"
