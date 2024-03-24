@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cs30keuot1irx" path="res://ass/black-1072366_1920.jpg" id="1_rdcew"]
 [ext_resource type="Script" path="res://Quit.gd" id="2_5e5mo"]
-[ext_resource type="Script" path="res://scenes/SinglePlayer.gd" id="2_12doa"]
+[ext_resource type="Script" path="res://scenes/change_to_singlePlayer.gd" id="2_12doa"]
 [ext_resource type="Texture2D" uid="uid://c6f4oqrmp6o2f" path="res://ass/poker_hand.png" id="3_pwh7q"]
 
 [node name="MarginContainer" type="MarginContainer"]
