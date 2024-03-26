@@ -1,14 +1,18 @@
 extends Node2D
 
-# FORMAT for calling assets will be "res://ass/cards/card{CARD}", card = "_clubs_03" etc
+# FORMAT for calling assets will be "res://ass/cards/card{CARD}" + ".png", card = "_clubs_03" etc
 
 # card suits and values
 var suits = ["hearts", "diamonds", "clubs", "spades"]
 var values = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "A"]
 var player_deck = []
+var num_of_played = 0
+
+var blitz_pile = 10 # All players start with 10 cards in the blitz pile
 
 # make a random num generator
 var random = RandomNumberGenerator.new()
+
 # make the deck, shuffle it, return it.
 func make_deck():
 	for suit in suits:
@@ -18,6 +22,7 @@ func make_deck():
 	return player_deck
 
 func _ready():
+	
 	# for the 4 starting cards all players get
 	var starting_cards = []
 	
@@ -42,6 +47,7 @@ func _ready():
 	$HBoxContainer/CardUI4/TextureRect.texture = load(card)	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# most likely will use this for game logic if it works as I expect.
 func _process(delta):
 	pass
 
