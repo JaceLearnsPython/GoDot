@@ -14,44 +14,61 @@ var blitz_pile = 10 # All players start with 10 cards in the blitz pile
 var random = RandomNumberGenerator.new()
 
 # make the deck, shuffle it, return it.
-func make_deck():
+func make_deck(deck):
 	for suit in suits:
 		for num in values:
-			player_deck.append(str("_" + suit + "_" + num))
-	player_deck.shuffle()
-	return player_deck
+			deck.append(str("_" + suit + "_" + num))
+	deck.shuffle()
+	return deck
 
 func _ready():
 	
-	# for the 4 starting cards all players get
-	var starting_cards = []
+	# holds AI decks
+	var ai_deck1 = []
+	var ai_deck2 = []
+	var ai_deck3 = []
 	
-	# create the deck!
-	make_deck()
+	# AI decks
+	make_deck(ai_deck1)
+	make_deck(ai_deck2)
+	make_deck(ai_deck3)
+	
+	# create the deck for main player
+	make_deck(player_deck)
+	
+	# get the starting cards
+	starting_deal(player_deck, "Player1")
+	
+	# deal for the AI
+	starting_deal(ai_deck1, "AI_Player2")
+	starting_deal(ai_deck2, "AI_Player3")
+	starting_deal(ai_deck3, "AI_Player4")
+
+# Deal the starting cards!
+func starting_deal(deck, player):
+	
+	var starting_cards = []
+	var path = ""
 	
 	# get the starting cards
 	for i in range(4):
-		starting_cards.append(player_deck.pop_front())
+		starting_cards.append(deck.pop_front())
 	
-	# modify the cards texture to the new cards.
-	var card = "res://ass/cards/card" + starting_cards[0] + ".png"
-	$HBoxContainer/CardUI1/TextureRect.texture = load(card)
-		
-	card = "res://ass/cards/card" + starting_cards[1] + ".png"
-	$HBoxContainer/CardUI2/TextureRect.texture = load(card)
+	# Set the texture of each card
+	for i in range(4):
+		path = player + "/CardUI" + str(i+1) + "/TextureRect"
+		print(path)
+		var node = get_node(path)
+		var card = "res://ass/cards/card" + starting_cards[i] + ".png"
+		node.texture = load(card)
 	
-	card = "res://ass/cards/card" + starting_cards[2] + ".png"
-	$HBoxContainer/CardUI3/TextureRect.texture = load(card)
-	
-	card = "res://ass/cards/card" + starting_cards[3] + ".png"
-	$HBoxContainer/CardUI4/TextureRect.texture = load(card)	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # most likely will use this for game logic if it works as I expect.
 func _process(delta):
 	pass
 
-
+# DRAW BUTTON
 func _on_draw_pressed():
 	var next_card
 	var rand = random.randi_range(0, player_deck.size() - 1)
@@ -66,3 +83,8 @@ func _on_draw_pressed():
 	# D is pressed.
 	
 	# Also change Deck to just be a texture and not a button texture.
+
+# Add the options to leave
+func _on_back_button_pressed():
+		get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+
