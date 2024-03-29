@@ -14,6 +14,11 @@ config/name="Brot Blitz"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [layer_names]
 
 2d_physics/layer_1="card_target_selector"
