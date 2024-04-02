@@ -13,14 +13,7 @@ var blitz_pile = 10 # All players start with 10 cards in the blitz pile
 # make a random num generator
 var random = RandomNumberGenerator.new()
 
-# make the deck, shuffle it, return it.
-func make_deck(deck):
-	for suit in suits:
-		for num in values:
-			deck.append(str("_" + suit + "_" + num))
-	deck.shuffle()
-	return deck
-
+# On scene Load
 func _ready():
 	
 	# holds AI decks
@@ -43,6 +36,21 @@ func _ready():
 	starting_deal(ai_deck1, "AI_Player2")
 	starting_deal(ai_deck2, "AI_Player3")
 	starting_deal(ai_deck3, "AI_Player4")
+	
+
+# Game Logic and called every frame
+func _process(delta):
+	pass
+# <------------------------------------------------------------------------------>
+# HELPERS AND BUTTONS BELOW
+
+# make the deck, shuffle it, return it.
+func make_deck(deck):
+	for suit in suits:
+		for num in values:
+			deck.append(str("_" + suit + "_" + num))
+	deck.shuffle()
+	return deck
 
 # Deal the starting cards!
 func starting_deal(deck, player):
@@ -57,20 +65,12 @@ func starting_deal(deck, player):
 	# Set the texture of each card
 	for i in range(4):
 		path = player + "/CardUI" + str(i+1) + "/TextureRect"
-		print(path)
 		var node = get_node(path)
 		var card = "res://ass/cards/card" + starting_cards[i] + ".png"
 		node.texture = load(card)
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-# most likely will use this for game logic if it works as I expect.
-func _process(delta):
-	pass
 
 # DRAW BUTTON
 func _on_draw_pressed():
-	var next_card
 	var rand = random.randi_range(0, player_deck.size() - 1)
 	
 	var card = "res://ass/cards/card" + player_deck[rand] + ".png"
@@ -84,7 +84,8 @@ func _on_draw_pressed():
 	
 	# Also change Deck to just be a texture and not a button texture.
 
+# BUTTONS BELOW
+
 # Add the options to leave
 func _on_back_button_pressed():
 		get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
-
