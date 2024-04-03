@@ -8,13 +8,24 @@ var values = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "A"]
 var player_deck = []
 var num_of_played = 0
 
-var blitz_pile = 10 # All players start with 10 cards in the blitz pile
+var card1
+var card2
+var card3
+var card4
+var hand = []
+
+const blitz_pile_size = 10 # All players start with 10 cards in the blitz pile
 
 # make a random num generator
 var random = RandomNumberGenerator.new()
 
 # On scene Load
 func _ready():
+	card1 = get_node("Player1/CardUI1")
+	card2 = get_node("Player1/CardUI2")
+	card3 = get_node("Player1/CardUI3")
+	card4 = get_node("Player1/CardUI4")
+	hand = [card1, card2, card3, card4]
 	
 	# holds AI decks
 	var ai_deck1 = []
@@ -40,7 +51,13 @@ func _ready():
 
 # Game Logic and called every frame
 func _process(delta):
-	pass
+	
+	# Handle dragging
+	for i  in len(hand):
+		if hand[i].selected:
+			hand[i].set_global_position(get_local_mouse_position() - Vector2(50,50))
+			hand[i].z_index = 2 # set above other cards.
+			
 # <------------------------------------------------------------------------------>
 # HELPERS AND BUTTONS BELOW
 

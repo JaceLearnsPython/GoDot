@@ -143,19 +143,19 @@ position = Vector2(1038, 500)
 position = Vector2(136, 209)
 
 [node name="deck_collision3" parent="Container" instance=ExtResource("5_xtag3")]
-position = Vector2(298, 270)
+position = Vector2(374, 234)
 
 [node name="deck_collision4" parent="Container" instance=ExtResource("5_xtag3")]
-position = Vector2(859, 356)
+position = Vector2(876, 350)
 
 [node name="deck_collision5" parent="Container" instance=ExtResource("5_xtag3")]
-position = Vector2(1066, 77)
+position = Vector2(1172, 126)
 
 [node name="deck_collision6" parent="Container" instance=ExtResource("5_xtag3")]
-position = Vector2(785, 132)
+position = Vector2(947, 94)
 
 [node name="deck_collision7" parent="Container" instance=ExtResource("5_xtag3")]
-position = Vector2(596, 374)
+position = Vector2(637, 370)
 
 [node name="deck_collision8" parent="Container" instance=ExtResource("5_xtag3")]
 position = Vector2(401, 489)
@@ -164,13 +164,13 @@ position = Vector2(401, 489)
 position = Vector2(132, 408)
 
 [node name="deck_collision10" parent="Container" instance=ExtResource("5_xtag3")]
-position = Vector2(606, 132)
+position = Vector2(642, 79)
 
 [node name="deck_collision11" parent="Container" instance=ExtResource("5_xtag3")]
-position = Vector2(309, 68)
+position = Vector2(309, 34)
 
 [node name="deck_collision12" parent="Container" instance=ExtResource("5_xtag3")]
-position = Vector2(1189, 321)
+position = Vector2(1259, 368)
 
 [connection signal="pressed" from="Deck" to="." method="_on_deck_pressed"]
 [connection signal="pressed" from="Draw" to="." method="_on_draw_pressed"]
