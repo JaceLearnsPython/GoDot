@@ -51,12 +51,17 @@ func _ready():
 
 # Game Logic and called every frame
 func _process(delta):
+	var offset: Vector2
+	offset = Vector2(0,0)
 	
 	# Handle dragging
 	for i  in len(hand):
 		if hand[i].selected:
 			hand[i].set_global_position(get_local_mouse_position() - Vector2(50,50))
 			hand[i].z_index = 2 # set above other cards.
+		else:
+			hand[i].set_global_position($Player1.position + offset)
+			offset += Vector2(105, 0)
 			
 # <------------------------------------------------------------------------------>
 # HELPERS AND BUTTONS BELOW
