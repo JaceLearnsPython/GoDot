@@ -7,11 +7,13 @@ var suits = ["hearts", "diamonds", "clubs", "spades"]
 var values = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "A"]
 var player_deck = []
 var num_of_played = 0
+var blitzPlayed = 0
 
 var card1
 var card2
 var card3
 var card4
+var deckCard
 var hand = []
 
 const blitz_pile_size = 10 # All players start with 10 cards in the blitz pile
@@ -25,7 +27,8 @@ func _ready():
 	card2 = get_node("Player1/CardUI2")
 	card3 = get_node("Player1/CardUI3")
 	card4 = get_node("Player1/CardUI4")
-	hand = [card1, card2, card3, card4]
+	deckCard = get_node("Player1/DeckCard")
+	hand = [card1, card2, card3, card4, deckCard]
 	
 	# holds AI decks
 	var ai_deck1 = []
@@ -48,16 +51,18 @@ func _ready():
 	starting_deal(ai_deck2, "AI_Player3")
 	starting_deal(ai_deck3, "AI_Player4")
 	
-
 # Game Logic and called every frame
 func _process(delta):
+	var offset: Vector2
+	offset = Vector2(0,0)
 	
 	# Handle dragging
 	for i  in len(hand):
 		if hand[i].selected:
 			hand[i].set_global_position(get_local_mouse_position() - Vector2(50,50))
 			hand[i].z_index = 2 # set above other cards.
-			
+		
+		# putting the card back is handled by card_ui.gd
 # <------------------------------------------------------------------------------>
 # HELPERS AND BUTTONS BELOW
 
@@ -92,16 +97,8 @@ func _on_draw_pressed():
 	
 	var card = "res://ass/cards/card" + player_deck[rand] + ".png"
 	card = load(card)
-	$Deck.texture_normal = card
-	
-	# TBD will need to be able to drag card and drop it to play.
-	# If they dont want to play, they should be able to draw again.
-	# It would be best to have a "D" for draw key and then draw a new card when 
-	# D is pressed.
-	
-	# Also change Deck to just be a texture and not a button texture.
+	$Player1/DeckCard/TextureRect.texture = card
 
-# BUTTONS BELOW
 
 # Add the options to leave
 func _on_back_button_pressed():

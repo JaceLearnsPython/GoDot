@@ -7,7 +7,7 @@
 size = Vector2(100, 142)
 
 [node name="CardUI" type="Node2D" groups=["draggable"]]
-z_index = 2
+z_index = 1
 position = Vector2(-3, -2)
 script = ExtResource("2_1pg6x")
 
