@@ -1,17 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dda64qmj6m6ts"]
-
-[sub_resource type="GDScript" id="GDScript_ixllw"]
-script/source = "extends Area2D
-
-
-
-"
+[gd_scene load_steps=2 format=3 uid="uid://dda64qmj6m6ts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfqls"]
 size = Vector2(97, 141)
 
 [node name="deck" type="Area2D" groups=["dropable"]]
-script = SubResource("GDScript_ixllw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 97.0

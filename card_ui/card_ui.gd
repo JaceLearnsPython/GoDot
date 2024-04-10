@@ -31,3 +31,6 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	mouse_in = false
 
+# for putting the card in a deck
+func _on_area_2d_area_entered(area):
+	print("HELLO")
