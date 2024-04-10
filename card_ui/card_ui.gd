@@ -5,6 +5,9 @@ var selected = false
 var in_droppable
 var og_pos: Vector2
 
+func _ready():
+	og_pos = position
+
 func _process(delta):
 	pass
 
@@ -19,6 +22,7 @@ func _input(event):
 		
 	if Input.is_action_just_released("left-click"):
 		selected = false
+		position = og_pos
 
 	
 func _on_area_2d_mouse_entered():
