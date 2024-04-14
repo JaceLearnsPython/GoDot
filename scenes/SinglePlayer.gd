@@ -63,6 +63,8 @@ func _process(delta):
 			hand[i].z_index = 2 # set above other cards.
 		
 		# putting the card back is handled by card_ui.gd
+		
+
 # <------------------------------------------------------------------------------>
 # HELPERS AND BUTTONS BELOW
 

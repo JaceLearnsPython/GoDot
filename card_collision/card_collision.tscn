@@ -1,7 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://dda64qmj6m6ts"]
+[gd_scene load_steps=3 format=3 uid="uid://dda64qmj6m6ts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfqls"]
 size = Vector2(97, 141)
+
+[sub_resource type="GDScript" id="GDScript_hpxgk"]
+script/source = "extends TextureRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="deck" type="Area2D" groups=["dropable"]]
 
@@ -17,3 +31,5 @@ shape = SubResource("RectangleShape2D_nfqls")
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 97.0
 offset_bottom = 141.0
+scale = Vector2(0.6, 0.6)
+script = SubResource("GDScript_hpxgk")

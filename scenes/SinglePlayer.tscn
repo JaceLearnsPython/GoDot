@@ -126,39 +126,51 @@ offset_bottom = 922.0
 metadata/_edit_use_anchors_ = true
 
 [node name="deck_collision" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(1038, 500)
 
 [node name="deck_collision2" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(136, 209)
 
 [node name="deck_collision3" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(374, 234)
 
 [node name="deck_collision4" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(876, 350)
 
 [node name="deck_collision5" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(1172, 126)
 
 [node name="deck_collision6" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(947, 94)
 
 [node name="deck_collision7" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(637, 370)
 
 [node name="deck_collision8" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(401, 489)
 
 [node name="deck_collision9" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(132, 408)
 
 [node name="deck_collision10" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(642, 79)
 
 [node name="deck_collision11" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(309, 34)
 
 [node name="deck_collision12" parent="Container" instance=ExtResource("5_xtag3")]
+unique_name_in_owner = true
 position = Vector2(1259, 368)
 
 [node name="subDeckCard" type="TextureRect" parent="."]
