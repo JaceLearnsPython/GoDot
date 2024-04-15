@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ben7qqx34vpkq" path="res://ass/cards/card_back.png" id="2_jcrdb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rywg1"]
-size = Vector2(100, 142)
+size = Vector2(78, 121)
 
-[node name="CardUI" type="Node2D" groups=["draggable"]]
+[node name="CardUI" type="Node2D" groups=["card", "draggable"]]
 z_index = 1
 position = Vector2(-3, -2)
 script = ExtResource("2_1pg6x")
@@ -22,12 +22,13 @@ expand_mode = 4
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(3, 1)
-collision_mask = 2
 monitorable = false
 
 [node name="CardCollision" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(48, 71)
+position = Vector2(48, 71.5)
 shape = SubResource("RectangleShape2D_rywg1")
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

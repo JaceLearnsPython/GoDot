@@ -4,7 +4,7 @@ extends Node2D
 
 # card suits and values
 var suits = ["hearts", "diamonds", "clubs", "spades"]
-var values = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "A"]
+var values = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "01"]
 var player_deck = []
 var num_of_played = 0
 var blitzPlayed = 0
@@ -15,6 +15,7 @@ var card3
 var card4
 var deckCard
 var hand = []
+
 
 const blitz_pile_size = 10 # All players start with 10 cards in the blitz pile
 
@@ -42,7 +43,7 @@ func _ready():
 	
 	# create the deck for main player
 	make_deck(player_deck)
-	
+
 	# get the starting cards
 	starting_deal(player_deck, "Player1")
 	
@@ -61,8 +62,24 @@ func _process(delta):
 		if hand[i].selected:
 			hand[i].set_global_position(get_local_mouse_position() - Vector2(50,50))
 			hand[i].z_index = 2 # set above other cards.
+			
+		if hand[i].played:
+			var node_path = str(hand[i].get_path())
+			var card_node = get_node(node_path) # grab the card for later
+			card_node.played = false
+			node_path = node_path + "/TextureRect"
+			var node = get_node(node_path)
+			
+			# change the node's card
+			if len(player_deck) > 0:
+				print(node)
+				print("res://ass/cards/" + player_deck.pop_front() + ".png")
+				node.texture = load("res://ass/cards/card" + player_deck.pop_front() + ".png")
+				num_of_played += 1
 		
-		# putting the card back is handled by card_ui.gd
+				print(node.texture)
+
+
 # <------------------------------------------------------------------------------>
 # HELPERS AND BUTTONS BELOW
 
