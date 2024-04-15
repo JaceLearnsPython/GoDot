@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7bqw6bmwwqwt"
-path="res://.godot/imported/card_diamonds_A.png-546de377dd61e5d0b8067e86f1d781c4.ctex"
+uid="uid://bnpfq6edp6cmm"
+path="res://.godot/imported/card_clubs_01.png-4317f6d95603261027baa7111fa5460c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ass/cards/card_diamonds_A.png"
-dest_files=["res://.godot/imported/card_diamonds_A.png-546de377dd61e5d0b8067e86f1d781c4.ctex"]
+source_file="res://ass/cards/card_clubs_01.png"
+dest_files=["res://.godot/imported/card_clubs_01.png-4317f6d95603261027baa7111fa5460c.ctex"]
 
 [params]
 
