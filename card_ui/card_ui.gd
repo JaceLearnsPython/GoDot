@@ -22,7 +22,8 @@ func card_played():
 		
 		# check if it is an empty stack
 		if area_node.texture == null:
-			if card_num[2].contains("1"):
+			print(card_num)
+			if card_num[2].contains("01.png"):
 				area_node.texture = $TextureRect.texture
 				played = true
 

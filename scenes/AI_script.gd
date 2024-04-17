@@ -5,6 +5,7 @@ extends "SinglePlayer.gd"
 var ai_hand = []
 var ai_deck = []
 var active_decks = []
+var played_count = 0
 
 # timer delay
 var timer = 0.0
@@ -17,10 +18,9 @@ func _ready():
 
 	for i in range(16):
 		var node
-		var path = "../Container/deck_collision1"
-		node = get_node("../Container/deck_collision1")
-		print(node)
-
+		var path = "../Container/deck_collision" + str(i+1) + "/TextureRect"
+		node = get_node(path)
+		active_decks.append(node)
 	
 # called every frame to process AI logic
 func _process(delta):
@@ -31,27 +31,60 @@ func _process(delta):
 		return
 	timer = 0
 	
-	# after the delay, make a move if possible
-
 	# get the current hand after drawing
 	draw()	
 	get_hand()
-	for card in hand:
-		play_card(card)
 	
-	# check if we can play
+	# play card if possible
+	for i in len(ai_hand):
+		play_card(ai_hand[i], i)
 	
-func play_card(card):
-	pass
+func play_card(card, index):
+
+	for i in range(16):
+		# get the collision deck node
+		var deck = active_decks[i]
+		var card_str = str(card.texture.get_path())
+		card_str = card_str.split("_")
+				
+		# play ace
+		if deck.texture == null:
+			if card_str[2].contains("01.png"):
+				deck.texture = card.texture
+				update_hand(card, deck, index)
+		
+		# else check for other options
+		if deck.texture != null:
+			card_str = str(card.texture.get_path())
+			card_str = card_str.split("_") # split it so its [0]=path, [1] = suit [2] = num.png
+			
+			# check if we can play it 
+			var num = int(card_str[2].split(".")[0])
+			
+			var deck_str = str(deck.texture.get_path())
+			deck_str = deck_str.split("_")	
+			# check if we can play it 
+			var deck_num = int(deck_str[2].split(".")[0])
+			
+			if num == (deck_num+1) and deck_str[1] == card_str[1]:
+				deck.texture = card.texture
+				update_hand(card, deck, index)
+
+func update_hand(card, deck, index):
+	
+	var path = "res://ass/cards/card" + ai_deck.pop_back() + ".png"
+	ai_hand[index].texture = load(path)
+
+		
 
 
 # get the cardUI nodes
 func get_hand():
-	var card1 = get_node("CardUI1")
-	var card2 = get_node("CardUI2")
-	var card3 = get_node("CardUI3")
-	var card4 = get_node("CardUI4")
-	var deckCard = get_node("DeckCard")
+	var card1 = get_node("CardUI1/TextureRect")
+	var card2 = get_node("CardUI2/TextureRect")
+	var card3 = get_node("CardUI3/TextureRect")
+	var card4 = get_node("CardUI4/TextureRect")
+	var deckCard = get_node("DeckCard/TextureRect")
 	ai_hand = [card1, card2, card3, card4, deckCard]
 # chose to use essentailly a duplicate function since the path is different than when
 # the singeplayer script is used
