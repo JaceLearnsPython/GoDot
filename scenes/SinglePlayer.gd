@@ -31,26 +31,12 @@ func _ready():
 	deckCard = get_node("Player1/DeckCard")
 	hand = [card1, card2, card3, card4, deckCard]
 	
-	# holds AI decks
-	var ai_deck1 = []
-	var ai_deck2 = []
-	var ai_deck3 = []
-	
-	# AI decks
-	make_deck(ai_deck1)
-	make_deck(ai_deck2)
-	make_deck(ai_deck3)
-	
 	# create the deck for main player
 	make_deck(player_deck)
 
 	# get the starting cards
 	starting_deal(player_deck, "Player1")
-	
-	# deal for the AI
-	starting_deal(ai_deck1, "AI_Player2")
-	starting_deal(ai_deck2, "AI_Player3")
-	starting_deal(ai_deck3, "AI_Player4")
+
 	
 # Game Logic and called every frame
 func _process(delta):
@@ -72,12 +58,8 @@ func _process(delta):
 			
 			# change the node's card
 			if len(player_deck) > 0:
-				print(node)
-				print("res://ass/cards/" + player_deck.pop_front() + ".png")
 				node.texture = load("res://ass/cards/card" + player_deck.pop_front() + ".png")
 				num_of_played += 1
-		
-				print(node.texture)
 
 
 # <------------------------------------------------------------------------------>
@@ -95,6 +77,7 @@ func make_deck(deck):
 func starting_deal(deck, player):
 	
 	var starting_cards = []
+	
 	var path = ""
 	
 	# get the starting cards
@@ -110,6 +93,7 @@ func starting_deal(deck, player):
 
 # DRAW BUTTON
 func _on_draw_pressed():
+	# need to change to not be random and treat it like a stack
 	var rand = random.randi_range(0, player_deck.size() - 1)
 	
 	var card = "res://ass/cards/card" + player_deck[rand] + ".png"
