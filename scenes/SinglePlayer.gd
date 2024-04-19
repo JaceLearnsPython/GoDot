@@ -7,7 +7,9 @@ var suits = ["hearts", "diamonds", "clubs", "spades"]
 var values = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "01"]
 var player_deck = []
 var num_of_played = 0
-var blitzPlayed = 0
+var blitz_played = 0
+var ai_played = false # used to keep track if an AI just played to stagger moves so
+					  # a deck does not instantly fill.
 
 var card1
 var card2
@@ -15,6 +17,9 @@ var card3
 var card4
 var deckCard
 var hand = []
+var player_deck_index = 0
+
+var played_cards = []
 
 
 const blitz_pile_size = 10 # All players start with 10 cards in the blitz pile
@@ -31,31 +36,15 @@ func _ready():
 	deckCard = get_node("Player1/DeckCard")
 	hand = [card1, card2, card3, card4, deckCard]
 	
-	# holds AI decks
-	var ai_deck1 = []
-	var ai_deck2 = []
-	var ai_deck3 = []
-	
-	# AI decks
-	make_deck(ai_deck1)
-	make_deck(ai_deck2)
-	make_deck(ai_deck3)
-	
 	# create the deck for main player
 	make_deck(player_deck)
 
 	# get the starting cards
-	starting_deal(player_deck, "Player1")
-	
-	# deal for the AI
-	starting_deal(ai_deck1, "AI_Player2")
-	starting_deal(ai_deck2, "AI_Player3")
-	starting_deal(ai_deck3, "AI_Player4")
+	starting_deal("Player1")
+
 	
 # Game Logic and called every frame
 func _process(delta):
-	var offset: Vector2
-	offset = Vector2(0,0)
 	
 	# Handle dragging
 	for i  in len(hand):
@@ -69,19 +58,31 @@ func _process(delta):
 			card_node.played = false
 			node_path = node_path + "/TextureRect"
 			var node = get_node(node_path)
+			remove_card(node.texture.get_path())
 			
 			# change the node's card
 			if len(player_deck) > 0:
-				print(node)
-				print("res://ass/cards/" + player_deck.pop_front() + ".png")
-				node.texture = load("res://ass/cards/card" + player_deck.pop_front() + ".png")
-				num_of_played += 1
-		
-				print(node.texture)
+				var played_card = player_deck.pop_back()
+				played_cards.append(played_card)
+				node.texture = load("res://ass/cards/card" + played_card + ".png")
+				
+				if i == 3:
+					blitz_played +=1
+				else:
+					num_of_played+=1
 
 
 # <------------------------------------------------------------------------------>
 # HELPERS AND BUTTONS BELOW
+func remove_card(card):
+	card = card.split("card")[2].split(".")[0]
+	
+	var i = player_deck.find(card)
+	if player_deck.find(card) != -1:
+		print("deck contains dupe")
+		player_deck.remove_at(i)
+		print("Removed.\n")
+
 
 # make the deck, shuffle it, return it.
 func make_deck(deck):
@@ -92,14 +93,15 @@ func make_deck(deck):
 	return deck
 
 # Deal the starting cards!
-func starting_deal(deck, player):
+func starting_deal(player):
 	
 	var starting_cards = []
+	
 	var path = ""
 	
 	# get the starting cards
 	for i in range(4):
-		starting_cards.append(deck.pop_front())
+		starting_cards.append(player_deck.pop_front())
 	
 	# Set the texture of each card
 	for i in range(4):
@@ -110,12 +112,14 @@ func starting_deal(deck, player):
 
 # DRAW BUTTON
 func _on_draw_pressed():
-	var rand = random.randi_range(0, player_deck.size() - 1)
+	# need to change to not be random and treat it like a stack
+	if player_deck_index >= player_deck.size() - 1:
+		player_deck_index = 0
 	
-	var card = "res://ass/cards/card" + player_deck[rand] + ".png"
+	var card = "res://ass/cards/card" + player_deck[player_deck_index] + ".png"
 	card = load(card)
 	$Player1/DeckCard/TextureRect.texture = card
-
+	player_deck_index +=3
 
 # Add the options to leave
 func _on_back_button_pressed():
