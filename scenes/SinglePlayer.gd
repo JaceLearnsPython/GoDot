@@ -7,7 +7,7 @@ var suits = ["hearts", "diamonds", "clubs", "spades"]
 var values = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "01"]
 var player_deck = []
 var num_of_played = 0
-var blitzPlayed = 0
+var blitz_played = 0
 
 var card1
 var card2
@@ -15,6 +15,9 @@ var card3
 var card4
 var deckCard
 var hand = []
+var player_deck_index = 0
+
+var played_cards = []
 
 
 const blitz_pile_size = 10 # All players start with 10 cards in the blitz pile
@@ -35,13 +38,11 @@ func _ready():
 	make_deck(player_deck)
 
 	# get the starting cards
-	starting_deal(player_deck, "Player1")
+	starting_deal("Player1")
 
 	
 # Game Logic and called every frame
 func _process(delta):
-	var offset: Vector2
-	offset = Vector2(0,0)
 	
 	# Handle dragging
 	for i  in len(hand):
@@ -58,12 +59,25 @@ func _process(delta):
 			
 			# change the node's card
 			if len(player_deck) > 0:
-				node.texture = load("res://ass/cards/card" + player_deck.pop_front() + ".png")
-				num_of_played += 1
+				var played_card = player_deck.pop_back()
+				played_cards.append(played_card)
+				node.texture = load("res://ass/cards/card" + played_card + ".png")
+				validate_deck()
+				
+				if i == 3:
+					blitz_played +=1
+				else:
+					num_of_played+=1
 
 
 # <------------------------------------------------------------------------------>
 # HELPERS AND BUTTONS BELOW
+func validate_deck():
+	for card in player_deck:
+		if played_cards.has(card):
+			var index = player_deck.find(card)
+			if index >= 0:
+				player_deck.remove_at(index)
 
 # make the deck, shuffle it, return it.
 func make_deck(deck):
@@ -74,7 +88,7 @@ func make_deck(deck):
 	return deck
 
 # Deal the starting cards!
-func starting_deal(deck, player):
+func starting_deal(player):
 	
 	var starting_cards = []
 	
@@ -82,7 +96,7 @@ func starting_deal(deck, player):
 	
 	# get the starting cards
 	for i in range(4):
-		starting_cards.append(deck.pop_front())
+		starting_cards.append(player_deck.pop_front())
 	
 	# Set the texture of each card
 	for i in range(4):
@@ -94,12 +108,13 @@ func starting_deal(deck, player):
 # DRAW BUTTON
 func _on_draw_pressed():
 	# need to change to not be random and treat it like a stack
-	var rand = random.randi_range(0, player_deck.size() - 1)
+	if player_deck_index >= player_deck.size() - 1:
+		player_deck_index = 0
 	
-	var card = "res://ass/cards/card" + player_deck[rand] + ".png"
+	var card = "res://ass/cards/card" + player_deck[player_deck_index] + ".png"
 	card = load(card)
 	$Player1/DeckCard/TextureRect.texture = card
-
+	player_deck_index +=3
 
 # Add the options to leave
 func _on_back_button_pressed():

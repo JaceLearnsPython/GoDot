@@ -6,7 +6,8 @@ var ai_hand = []
 var ai_deck = []
 var active_decks = []
 var played_count = 0
-
+var ai_blitz_played = 0
+var deck_index = 0
 # timer delay
 var timer = 0.0
 var rand = RandomNumberGenerator.new()
@@ -52,6 +53,13 @@ func play_card(card, index):
 			if card_str[2].contains("01.png"):
 				deck.texture = card.texture
 				update_hand(card, deck, index)
+				
+				# keep track of points
+				if index == 3:
+					ai_blitz_played +=1
+				else:
+					played_count+=1
+				
 		
 		# else check for other options
 		if deck.texture != null:
@@ -69,13 +77,35 @@ func play_card(card, index):
 			if num == (deck_num+1) and deck_str[1] == card_str[1]:
 				deck.texture = card.texture
 				update_hand(card, deck, index)
+		
+				if index == 3:
+					ai_blitz_played +=1
+				else:
+					played_count+=1
 
 func update_hand(card, deck, index):
-	
-	var path = "res://ass/cards/card" + ai_deck.pop_back() + ".png"
+	var popped_card = ai_deck.pop_back()
+	var path = "res://ass/cards/card" + popped_card + ".png"
 	ai_hand[index].texture = load(path)
+	
+	# just make sure we removed the card
+	var str_card = card.texture.get_path()
+	str_card = str_card.split("/")[4].split("card")[1].split(".")[0] # get _suit_num
+	var used_index = ai_deck.find(str_card)
 
-		
+	# make sure the card is removed
+	if used_index != -1:
+		ai_deck.remove_at(used_index)	
+
+
+
+
+#func validate_deck():
+	#for card in ai_deck:
+		#if ai_played_cards.has(card):
+			#var index = player_deck.find(card)
+			#if index >= 0:
+				#player_deck.remove_at(index)
 
 
 # get the cardUI nodes
@@ -104,12 +134,16 @@ func starting_ai_deal(deck):
 		var node = get_node(path)
 		var card = "res://ass/cards/card" + starting_cards[i] + ".png"
 		node.texture = load(card)
-
+		
 func draw():
-	var rand = random.randi_range(0, ai_deck.size() - 1)
 	
-	var card = "res://ass/cards/card" + ai_deck[rand] + ".png"
+	if deck_index >= ai_deck.size() - 1:
+		deck_index = 0
+	
+	var card = "res://ass/cards/card" + ai_deck[deck_index] + ".png"
 	card = load(card)
+	deck_index+=3 # move 3 at a time like in dutch blitz rules
+	
 	
 	var path = "DeckCard/TextureRect"
 	var node = get_node(path)
