@@ -39,7 +39,7 @@ position = Vector2(106, 5)
 position = Vector2(215, 5)
 
 [node name="CardUI4" parent="Player1" instance=ExtResource("2_3ppmo")]
-position = Vector2(325, 5)
+position = Vector2(335, 5)
 
 [node name="DeckCard" parent="Player1" instance=ExtResource("2_3ppmo")]
 position = Vector2(450, 0)
@@ -71,7 +71,7 @@ position = Vector2(548.999, -168.002)
 script = null
 
 [node name="CardUI4" parent="AI_Player2" instance=ExtResource("2_3ppmo")]
-position = Vector2(656.999, -169.002)
+position = Vector2(669.999, -169.002)
 script = null
 
 [node name="DeckCard" parent="AI_Player2" instance=ExtResource("2_3ppmo")]
@@ -96,11 +96,11 @@ position = Vector2(533.993, -1892)
 script = null
 
 [node name="CardUI4" parent="AI_Player3" instance=ExtResource("2_3ppmo")]
-position = Vector2(645.993, -1894)
+position = Vector2(657.993, -1892)
 script = null
 
 [node name="DeckCard" parent="AI_Player3" instance=ExtResource("2_3ppmo")]
-position = Vector2(775.993, -1896)
+position = Vector2(777.993, -1898)
 script = null
 
 [node name="AI_Player4" type="Node2D" parent="."]
@@ -121,11 +121,11 @@ position = Vector2(915, 12)
 script = null
 
 [node name="CardUI4" parent="AI_Player4" instance=ExtResource("2_3ppmo")]
-position = Vector2(1028, 11)
+position = Vector2(1044, 11)
 script = null
 
 [node name="DeckCard" parent="AI_Player4" instance=ExtResource("2_3ppmo")]
-position = Vector2(1170, 12)
+position = Vector2(1165, 8)
 script = null
 
 [node name="Back_Button" type="Button" parent="."]
@@ -212,6 +212,48 @@ offset_left = 1199.0
 offset_top = 986.0
 offset_right = 1367.0
 offset_bottom = 1226.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_f35wx")
+
+[node name="subDeckCard2" type="TextureRect" parent="."]
+offset_left = 1084.0
+offset_top = 990.0
+offset_right = 1252.0
+offset_bottom = 1230.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_f35wx")
+
+[node name="subDeckCard3" type="TextureRect" parent="."]
+offset_left = 1087.0
+offset_top = 989.0
+offset_right = 1255.0
+offset_bottom = 1229.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_f35wx")
+
+[node name="subDeckCard4" type="TextureRect" parent="."]
+offset_left = 164.0
+offset_top = 666.0
+offset_right = 332.0
+offset_bottom = 906.0
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_f35wx")
+
+[node name="subDeckCard5" type="TextureRect" parent="."]
+offset_left = 1895.0
+offset_top = 654.0
+offset_right = 2063.0
+offset_bottom = 894.0
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_f35wx")
+
+[node name="subDeckCard6" type="TextureRect" parent="."]
+offset_left = 1043.0
+offset_top = 8.0
+offset_right = 1211.0
+offset_bottom = 248.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_f35wx")
 

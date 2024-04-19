@@ -12,7 +12,7 @@ var deck_index = 0
 # timer delay
 var timer = 0.0
 var rand = RandomNumberGenerator.new()
-var delay = rand.randf_range(60,80)
+var delay = rand.randf_range(90,160)
 
 func _ready():
 	ai_deck = make_deck(ai_deck)
@@ -54,12 +54,13 @@ func play_card(card, index):
 			if card_str[2].contains("01.png"):
 				deck.texture = card.texture
 				update_hand(card, deck, index)
-				
+				ai_played = true
 				# keep track of points
 				if index == 3:
 					ai_blitz_played +=1
 				else:
 					played_count+=1
+				return
 				
 		
 		# else check for other options
@@ -78,11 +79,13 @@ func play_card(card, index):
 			if num == (deck_num+1) and deck_str[1] == card_str[1]:
 				deck.texture = card.texture
 				update_hand(card, deck, index)
-		
+				ai_played = true
+				
 				if index == 3:
 					ai_blitz_played +=1
 				else:
 					played_count+=1
+				return
 
 func update_hand(card, deck, index):
 	var popped_card = ai_deck.pop_back()
