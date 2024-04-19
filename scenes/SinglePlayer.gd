@@ -56,13 +56,13 @@ func _process(delta):
 			card_node.played = false
 			node_path = node_path + "/TextureRect"
 			var node = get_node(node_path)
+			remove_card(node.texture.get_path())
 			
 			# change the node's card
 			if len(player_deck) > 0:
 				var played_card = player_deck.pop_back()
 				played_cards.append(played_card)
 				node.texture = load("res://ass/cards/card" + played_card + ".png")
-				validate_deck()
 				
 				if i == 3:
 					blitz_played +=1
@@ -72,12 +72,15 @@ func _process(delta):
 
 # <------------------------------------------------------------------------------>
 # HELPERS AND BUTTONS BELOW
-func validate_deck():
-	for card in player_deck:
-		if played_cards.has(card):
-			var index = player_deck.find(card)
-			if index >= 0:
-				player_deck.remove_at(index)
+func remove_card(card):
+	card = card.split("card")[2].split(".")[0]
+	
+	var i = player_deck.find(card)
+	if player_deck.find(card) != -1:
+		print("deck contains dupe")
+		player_deck.remove_at(i)
+		print("Removed.\n")
+
 
 # make the deck, shuffle it, return it.
 func make_deck(deck):

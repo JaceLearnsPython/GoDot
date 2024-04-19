@@ -6,6 +6,7 @@ var ai_hand = []
 var ai_deck = []
 var active_decks = []
 var played_count = 0
+
 var ai_blitz_played = 0
 var deck_index = 0
 # timer delay
@@ -85,17 +86,16 @@ func play_card(card, index):
 
 func update_hand(card, deck, index):
 	var popped_card = ai_deck.pop_back()
+
 	var path = "res://ass/cards/card" + popped_card + ".png"
 	ai_hand[index].texture = load(path)
 	
 	# just make sure we removed the card
 	var str_card = card.texture.get_path()
 	str_card = str_card.split("/")[4].split("card")[1].split(".")[0] # get _suit_num
-	var used_index = ai_deck.find(str_card)
-
-	# make sure the card is removed
-	if used_index != -1:
-		ai_deck.remove_at(used_index)	
+	
+	# MAKE SURE TO REMOVE THE CARD
+	remove_card(str(card.texture.get_path()))
 
 
 

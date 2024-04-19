@@ -18,14 +18,15 @@ func _process(delta):
 			
 func card_played():
 		card_num = str($TextureRect.texture.get_path())
+		var played_card = card_num
 		card_num = card_num.split("_")
 		
 		# check if it is an empty stack
 		if area_node.texture == null:
-			print(card_num)
 			if card_num[2].contains("01.png"):
 				area_node.texture = $TextureRect.texture
 				played = true
+				return
 
 				
 		# otherwise there is a card
@@ -41,7 +42,7 @@ func card_played():
 			if num == (node_num+1) and node_str[1] == card_num[1]:
 				area_node.texture = $TextureRect.texture
 				played = true
-
+				return
 
 # handle input for card dragging
 func _input(event):
