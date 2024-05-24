@@ -83,7 +83,6 @@ func remove_card(card):
 		player_deck.remove_at(i)
 		print("Removed.\n")
 
-
 # make the deck, shuffle it, return it.
 func make_deck(deck):
 	for suit in suits:

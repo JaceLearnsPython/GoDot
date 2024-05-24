@@ -33,7 +33,12 @@ func _ready():
 	
 # called every frame to process AI logic
 func _process(delta):
-	pass
+	if timer < delay:
+		timer+=1
+		return
+
+	draw()
+	timer = 0
 	
 #=====================================================================
 # Helpers and other functions
@@ -66,9 +71,32 @@ func starting_dealAI():
 
 # draw a card and replace the top card of the deck
 func draw():
+	
 	# reset the index if we are passed the bounds of the deck
 	if deck_index >= ai_deck.size() -1:
 		deck_index = 0
+		
+	# get the deck card and compare to the empty card
+	var node = get_node("DeckCard/TextureRect")
+	var path = node.texture.get_path()
+	var empty_card = "res://ass/cards/card_back.png"
 	
-	# should the card be removed from the deck and then put back next time we draw?
-	var card = "res://ass/cards/card"
+	# if its empty, we just need to replace the texture with a new card
+	if path == empty_card:
+		var num = ai_deck.pop_at(deck_index)
+		var card = "res://ass/cards/card" + num + ".png"
+		node.texture = load(card)
+		deck_index += 3
+		return
+	
+	# put the old card back and get a new one
+	var deck_str = path.split("card") # split it so its [0]=path, [1] = suit [2] = num.png
+	var old_card = deck_str[2].split(".")[0] # get "_hearts_08"
+	var new_card = ai_deck.pop_at(deck_index) # get the new card
+	deck_index += 3
+	ai_deck.push_back(old_card) # put the old card back
+	
+	# change texture to new card
+	var card = "res://ass/cards/card" + new_card + ".png"
+	node.texture = load(card)
+	return	
