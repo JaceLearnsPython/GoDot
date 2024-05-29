@@ -2,10 +2,11 @@ extends "SinglePlayer.gd"
 
 
 # holds the CardUI nodes
-var ai_hand = []
-var ai_deck = []
+var ai_hand = [] # filled with text rect nodes
+var ai_deck = [] 
 var played_deck = []
 var active_decks = []
+var played = false
 
 var played_count = 0
 var ai_blitz_played = 0
@@ -29,19 +30,30 @@ func _ready():
 		node = get_node(path)
 		active_decks.append(node)
 	
-	
-	
 # called every frame to process AI logic
 func _process(delta):
+	
+	# delay the AI
 	if timer < delay:
 		timer+=1
 		return
-
+	
+	played = false
 	draw()
+	get_hand()
+	play_card()
 	timer = 0
 	
 #=====================================================================
 # Helpers and other functions
+
+# Update the ai_hand
+func get_hand():
+	for i in range(4):
+		var node_str = "CardUI" + str(i+1) + "/TextureRect"
+		ai_hand.insert(i, get_node(node_str))
+	var deck_node = "DeckCard/TextureRect"
+	ai_hand.insert(4, get_node(deck_node)) # don't forget deck node
 
 # make a deck, returns a shuffled deck.
 func make_deckAI():
@@ -71,7 +83,10 @@ func starting_dealAI():
 
 # draw a card and replace the top card of the deck
 func draw():
-	
+	# make sure deck is not empty
+	if len(ai_deck) == 0:
+		return
+
 	# reset the index if we are passed the bounds of the deck
 	if deck_index >= ai_deck.size() -1:
 		deck_index = 0
@@ -100,3 +115,47 @@ func draw():
 	var card = "res://ass/cards/card" + new_card + ".png"
 	node.texture = load(card)
 	return	
+
+# handles the logic of playing card, including
+# checking the hand, playing the card, and removing the card
+# from the deck. Most of the game logic relies on this function
+func play_card():
+	# loop through all the active decks
+	for i in range(len(active_decks)):
+		# check if we can play the current hand card in the active deck
+		for j in range(len(ai_hand)):
+			play_card_on_deck(j, ai_hand[j], active_decks[i])
+			if played:
+				update_hand(j)
+				return
+
+# curr_ad = the current active deck card
+# hand_card is the hand card node
+# function to play a card on a deck if possible
+func play_card_on_deck(index, hand_card, curr_ad):
+	var card_node = hand_card.texture.get_path()
+	var card_num = int(card_node.split("_")[2].split(".")[0])
+	var card_suit = str(card_node.split("_")[1])
+	
+	# play an 1 if the active deck is empty
+	if curr_ad.texture == null and card_num == 1:
+		curr_ad.texture = hand_card.texture
+		played = true # set it to played so we exit in play_card
+		played_count += 1
+		
+		# make sure to count the blitz played
+		if index == 3:
+			blitz_played+=1
+		return
+	
+	# last thing to do is play a card on top of 1s, check for suit and num
+
+func update_hand(index):
+	if ai_deck.is_empty():
+		return
+
+	var card = ai_deck.pop_back()
+	var tex = load("res://ass/cards/card" + card + ".png")
+	ai_hand[index].texture = tex
+	
+	
