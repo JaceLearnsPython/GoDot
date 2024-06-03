@@ -84,11 +84,11 @@ script = ExtResource("4_35k53")
 metadata/_edit_use_anchors_ = true
 
 [node name="CardUI1" parent="AI_Player3" instance=ExtResource("2_3ppmo")]
-position = Vector2(425.993, -1892)
+position = Vector2(318, -1887)
 script = null
 
 [node name="CardUI2" parent="AI_Player3" instance=ExtResource("2_3ppmo")]
-position = Vector2(319.993, -1890)
+position = Vector2(426.993, -1890)
 script = null
 
 [node name="CardUI3" parent="AI_Player3" instance=ExtResource("2_3ppmo")]
