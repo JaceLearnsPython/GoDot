@@ -10,6 +10,7 @@ var num_of_played = 0
 var blitz_played = 0
 var ai_played = false # used to keep track if an AI just played to stagger moves so
 					  # a deck does not instantly fill.
+var game_end = false
 
 var card1
 var card2
@@ -45,7 +46,7 @@ func _ready():
 	
 # Game Logic and called every frame
 func _process(delta):
-	
+
 	# Handle dragging
 	for i  in len(hand):
 		if hand[i].selected:
@@ -68,8 +69,10 @@ func _process(delta):
 				
 				if i == 3:
 					blitz_played +=1
+					return
 				else:
 					num_of_played+=1
+					return
 
 
 # <------------------------------------------------------------------------------>

@@ -8,8 +8,9 @@ var played_deck = []
 var active_decks = []
 var played = false
 
-var played_count = 0
-var ai_blitz_played = 0
+var ai_non_blitz_played = 0
+var ai_blitz_played = false
+var ai_blitz_points = 0
 
 var deck_index = 0
 
@@ -33,17 +34,32 @@ func _ready():
 # called every frame to process AI logic
 func _process(delta):
 	
+	#check_game_end()
+	#if game_end:
+		#end_the_game()
+	
 	# delay the AI
 	if timer < delay:
 		timer+=1
 		return
 	
-	played = false
+	# count the points
+	if played:
+		ai_non_blitz_played +=1
+		played = false
+		
+	if ai_blitz_played:
+		ai_blitz_points +=1
+		ai_blitz_played = false
+
 	draw()
 	get_hand()
 	play_card()
 	timer = 0
 	
+	#print("Length of AI deck: " + str(len(ai_deck)))
+	#print("Played Blitz: " + str(ai_blitz_points))
+	#print("Played Count: " + str(played_count))
 #=====================================================================
 # Helpers and other functions
 
@@ -141,21 +157,49 @@ func play_card_on_deck(index, hand_card, curr_ad):
 	if curr_ad.texture == null and card_num == 1:
 		curr_ad.texture = hand_card.texture
 		played = true # set it to played so we exit in play_card
-		played_count += 1
 		
 		# make sure to count the blitz played
 		if index == 3:
-			blitz_played+=1
+			ai_blitz_played = true
 		return
 	
-	# last thing to do is play a card on top of 1s, check for suit and num
+	# get ad info
+	if curr_ad.texture != null:
+
+		var ad_node = curr_ad.texture.get_path()
+		var ad_num = int(ad_node.split("_")[2].split(".")[0])
+		var ad_suit = str(ad_node.split("_")[1])
+
+		if card_num == (ad_num+1) and ad_suit == card_suit:
+			curr_ad.texture = hand_card.texture
+			played = true
+		
+			# make sure to count the blitz played
+		if index == 3:
+			ai_blitz_played = true
+			
+		return	
+	# check if card num is higher than deck num
+	# and check suit matches
+	
 
 func update_hand(index):
+	
 	if ai_deck.is_empty():
 		return
 
 	var card = ai_deck.pop_back()
 	var tex = load("res://ass/cards/card" + card + ".png")
 	ai_hand[index].texture = tex
-	
-	
+
+# called to check if the game is over / if anyone has plaayed more than 10 blitz cards
+func check_game_end():
+	print("AI Played: " + str(ai_blitz_points))
+	print("AI played total: " + str(ai_non_blitz_played))
+	print("SINGLE played: " + str(blitz_played))
+	if ai_blitz_points >= 10 || blitz_played >= 10:
+		game_end = true
+
+# called when the game is over. Will need to display points and the score of each player
+func end_the_game():
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
