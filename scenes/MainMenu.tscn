@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1ulie8kq8hvq"]
+[gd_scene load_steps=4 format=3 uid="uid://c1ulie8kq8hvq"]
 
-[ext_resource type="Texture2D" uid="uid://cs30keuot1irx" path="res://ass/black-1072366_1920.jpg" id="1_rdcew"]
+[ext_resource type="Texture2D" uid="uid://ca2024ek00x7c" path="res://ass/brot_blitz_title.jpg" id="1_adpum"]
 [ext_resource type="Script" path="res://Quit.gd" id="2_5e5mo"]
 [ext_resource type="Script" path="res://scenes/change_to_singlePlayer.gd" id="2_12doa"]
-[ext_resource type="Texture2D" uid="uid://c6f4oqrmp6o2f" path="res://ass/poker_hand.png" id="3_pwh7q"]
 
 [node name="MarginContainer" type="MarginContainer"]
 offset_right = 40.0
@@ -11,7 +10,7 @@ offset_bottom = 40.0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_rdcew")
+texture = ExtResource("1_adpum")
 
 [node name="SinglePlayer" type="Button" parent="Background"]
 layout_mode = 1
@@ -60,13 +59,5 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
 script = ExtResource("2_5e5mo")
-
-[node name="TextureRect" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_left = 722.0
-offset_top = 66.0
-offset_right = 1208.0
-offset_bottom = 268.0
-texture = ExtResource("3_pwh7q")
 
 [connection signal="pressed" from="Background/SinglePlayer" to="Background/SinglePlayer" method="_on_pressed"]

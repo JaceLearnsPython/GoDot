@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://crpkwka1msxwn"]
+
+[ext_resource type="Texture2D" uid="uid://ch0684onltfrg" path="res://ass/game_over_image.jpg" id="1_0qsx4"]
+[ext_resource type="Script" path="res://scenes/change_to_singlePlayer.gd" id="2_jwoe1"]
+[ext_resource type="Script" path="res://Quit.gd" id="3_hsuye"]
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_0qsx4")
+
+[node name="Play Again?" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -112.0
+offset_right = 100.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again!"
+icon_alignment = 1
+script = ExtResource("2_jwoe1")
+
+[node name="Quit" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 10.0
+offset_right = 100.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+script = ExtResource("3_hsuye")
+
+[connection signal="pressed" from="Background/Play Again?" to="Background/Play Again?" method="_on_pressed"]
