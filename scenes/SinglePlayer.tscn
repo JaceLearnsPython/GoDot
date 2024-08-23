@@ -13,19 +13,19 @@ script = ExtResource("1_ruqbv")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1920.0
-offset_bottom = 1145.0
+offset_bottom = 1087.0
+size_flags_vertical = 4
 texture = ExtResource("1_irmfp")
 expand_mode = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Player1" type="HBoxContainer" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 755.0
-offset_top = 980.0
+offset_top = 912.0
 offset_right = 1357.0
-offset_bottom = 1141.0
+offset_bottom = 1073.0
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
@@ -47,9 +47,9 @@ position = Vector2(450, 0)
 [node name="Draw" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
 offset_left = 1337.0
-offset_top = 1024.0
+offset_top = 955.0
 offset_right = 1387.0
-offset_bottom = 1074.0
+offset_bottom = 1005.0
 text = "Draw"
 metadata/_edit_use_anchors_ = true
 
@@ -138,9 +138,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Container" type="BoxContainer" parent="."]
 offset_left = 189.0
-offset_top = 176.0
+offset_top = 126.0
 offset_right = 1731.0
-offset_bottom = 922.0
+offset_bottom = 872.0
 metadata/_edit_use_anchors_ = true
 
 [node name="deck_collision1" parent="Container" instance=ExtResource("5_xtag3")]
@@ -209,25 +209,25 @@ position = Vector2(1029, 286)
 
 [node name="subDeckCard" type="TextureRect" parent="."]
 offset_left = 1199.0
-offset_top = 986.0
+offset_top = 918.0
 offset_right = 1367.0
-offset_bottom = 1226.0
+offset_bottom = 1158.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_f35wx")
 
 [node name="subDeckCard2" type="TextureRect" parent="."]
 offset_left = 1084.0
-offset_top = 990.0
+offset_top = 922.0
 offset_right = 1252.0
-offset_bottom = 1230.0
+offset_bottom = 1162.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_f35wx")
 
 [node name="subDeckCard3" type="TextureRect" parent="."]
 offset_left = 1087.0
-offset_top = 989.0
+offset_top = 921.0
 offset_right = 1255.0
-offset_bottom = 1229.0
+offset_bottom = 1161.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_f35wx")
 
