@@ -16,13 +16,9 @@ to create an online version of this game.
 
 ## Modes
 
-**SingePlayer** will have four modes to choose from.
+**SingePlayer** will have three modes of varying difficulty to choose from.
 - Easy
 - Normal
 - Hard
-- Good Luck
 
 The mode's difficulty is tied to the restrictions placed on the AI players. The more difficult the mode, the faster the AI can play!
-
-**Multiplayer**
-TBD
