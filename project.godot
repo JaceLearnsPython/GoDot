@@ -32,3 +32,7 @@ left-click={
 
 2d_render/layer_1="Card"
 2d_physics/layer_1="cards"
+
+[rendering]
+
+renderer/rendering_method="mobile"
