@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2cvynrwyc0yg"
-path="res://.godot/imported/card_hearts_07.png-f017dbbe63e98ccbe6f433fa895a51e7.ctex"
+uid="uid://bf2vuguny5sf2"
+path="res://.godot/imported/main_screen.png-dad8dd94ae807b326a7b95dbdab34ecf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://New_Cards/yellow-hearts/card_hearts_07.png"
-dest_files=["res://.godot/imported/card_hearts_07.png-f017dbbe63e98ccbe6f433fa895a51e7.ctex"]
+source_file="res://ass/main_screen.png"
+dest_files=["res://.godot/imported/main_screen.png-dad8dd94ae807b326a7b95dbdab34ecf.ctex"]
 
 [params]
 

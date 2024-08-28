@@ -1,18 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1ulie8kq8hvq"]
+[gd_scene load_steps=8 format=3 uid="uid://c1ulie8kq8hvq"]
 
-[ext_resource type="Texture2D" uid="uid://ca2024ek00x7c" path="res://ass/brot_blitz_title.jpg" id="1_adpum"]
+[ext_resource type="Texture2D" uid="uid://bf2vuguny5sf2" path="res://ass/main_screen.png" id="1_4i4dt"]
 [ext_resource type="Script" path="res://Quit.gd" id="2_5e5mo"]
 [ext_resource type="Script" path="res://scenes/change_to_singlePlayer.gd" id="2_12doa"]
 
-[node name="MarginContainer" type="MarginContainer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wny4r"]
+bg_color = Color(0.537255, 0.623529, 0.584314, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkqyo"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ygto"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3opiv"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="Screen" type="MarginContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_adpum")
+texture = ExtResource("1_4i4dt")
 
-[node name="SinglePlayer" type="Button" parent="Background"]
+[node name="easy" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -20,12 +53,53 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -178.0
+offset_top = -121.0
 offset_right = 100.0
-offset_bottom = -78.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "PLAY
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wny4r")
+text = "EASY
+"
+icon_alignment = 1
+script = ExtResource("2_12doa")
+
+[node name="normal" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 8.0
+offset_right = 100.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wkqyo")
+text = "NORMAL"
+icon_alignment = 1
+script = ExtResource("2_12doa")
+
+[node name="hard" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 141.0
+offset_right = 101.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ygto")
+text = "HARD
 "
 icon_alignment = 1
 script = ExtResource("2_12doa")
@@ -37,14 +111,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -52.0
-offset_right = 100.0
-offset_bottom = 48.0
+offset_left = -892.0
+offset_top = 284.0
+offset_right = -705.0
+offset_bottom = 364.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "QUIT
-"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_3opiv")
+text = "QUIT"
 script = ExtResource("2_5e5mo")
 
-[connection signal="pressed" from="Background/SinglePlayer" to="Background/SinglePlayer" method="_on_pressed"]
+[connection signal="pressed" from="Background/easy" to="Background/easy" method="_on_pressed"]
+[connection signal="pressed" from="Background/normal" to="Background/normal" method="_on_pressed"]
+[connection signal="pressed" from="Background/hard" to="Background/hard" method="_on_pressed"]

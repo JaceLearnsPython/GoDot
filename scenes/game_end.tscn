@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://crpkwka1msxwn"]
 
-[ext_resource type="Texture2D" uid="uid://ch0684onltfrg" path="res://ass/game_over_image.jpg" id="1_0qsx4"]
+[ext_resource type="Texture2D" uid="uid://bf2vuguny5sf2" path="res://ass/main_screen.png" id="1_v7jox"]
 [ext_resource type="Script" path="res://scenes/change_to_singlePlayer.gd" id="2_jwoe1"]
 [ext_resource type="Script" path="res://Quit.gd" id="3_hsuye"]
 
@@ -10,7 +10,7 @@ offset_bottom = 40.0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_0qsx4")
+texture = ExtResource("1_v7jox")
 
 [node name="Play Again?" type="Button" parent="Background"]
 layout_mode = 1
@@ -20,12 +20,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -112.0
+offset_top = -50.0
 offset_right = 100.0
-offset_bottom = -12.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play Again!"
+text = "MAIN SCREEN"
 icon_alignment = 1
 script = ExtResource("2_jwoe1")
 
@@ -36,10 +36,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 10.0
-offset_right = 100.0
-offset_bottom = 110.0
+offset_left = -898.0
+offset_top = 280.0
+offset_right = -708.0
+offset_bottom = 368.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
