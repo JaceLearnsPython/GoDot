@@ -16,11 +16,10 @@ var deck_index = 0
 
 # timer delay
 var timer = 0.0
-var rand = RandomNumberGenerator.new()
-var delay = rand.randf_range(90,100)
+var delay = ChangeToSinglePlayer.time_delay
 
 func _ready():
-	
+	print(delay)
 	ai_deck = make_deckAI() # returns a shuffled deck of cards 1-10 and all 4 suits
 	starting_dealAI()
 	draw()
@@ -192,9 +191,10 @@ func update_hand(index):
 
 # called to check if the game is over / if anyone has plaayed more than 10 blitz cards
 func check_game_end():
-	print("AI Played: " + str(ai_blitz_points))
-	print("AI played total: " + str(ai_total_played))
-	print("SINGLE played: " + str(blitz_played))
+	#print("AI Played: " + str(ai_blitz_points))
+	#print("AI played total: " + str(ai_total_played))
+	#print("SINGLE played: " + str(blitz_played))
+	
 	if ai_blitz_points >= 10 || blitz_played >= 10:
 		game_end = true
 

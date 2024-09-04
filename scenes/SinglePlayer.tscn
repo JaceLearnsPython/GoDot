@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b88dv4vkljkq3"]
+[gd_scene load_steps=8 format=3 uid="uid://b88dv4vkljkq3"]
 
 [ext_resource type="Texture2D" uid="uid://0qkpb0yht1fv" path="res://ass/poker_background.jpg" id="1_irmfp"]
 [ext_resource type="Script" path="res://scenes/SinglePlayer.gd" id="1_ruqbv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/AI_script.gd" id="4_35k53"]
 [ext_resource type="Texture2D" uid="uid://ben7qqx34vpkq" path="res://ass/cards/card_back.png" id="5_f35wx"]
 [ext_resource type="PackedScene" uid="uid://dda64qmj6m6ts" path="res://card_collision/card_collision.tscn" id="5_xtag3"]
+[ext_resource type="FontFile" uid="uid://botdo7sojue6e" path="res://ass/RubikMonoOne-Regular.ttf" id="5_ycoew"]
 
 [node name="SinglePlayer" type="Node2D"]
 position = Vector2(0, -5)
@@ -50,6 +51,7 @@ offset_left = 1337.0
 offset_top = 955.0
 offset_right = 1387.0
 offset_bottom = 1005.0
+theme_override_fonts/font = ExtResource("5_ycoew")
 text = "Draw"
 metadata/_edit_use_anchors_ = true
 
@@ -133,6 +135,7 @@ offset_left = 11.0
 offset_top = 26.0
 offset_right = 211.0
 offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("5_ycoew")
 text = "Leave Game"
 metadata/_edit_use_anchors_ = true
 
