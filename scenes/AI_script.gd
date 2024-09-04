@@ -16,9 +16,10 @@ var deck_index = 0
 
 # timer delay
 var timer = 0.0
-var delay = 90
+var delay = ChangeToSinglePlayer.time_delay
 
 func _ready():
+	print(delay)
 	ai_deck = make_deckAI() # returns a shuffled deck of cards 1-10 and all 4 suits
 	starting_dealAI()
 	draw()

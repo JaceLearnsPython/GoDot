@@ -1,8 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://crpkwka1msxwn"]
+[gd_scene load_steps=9 format=3 uid="uid://crpkwka1msxwn"]
 
-[ext_resource type="Texture2D" uid="uid://bf2vuguny5sf2" path="res://ass/main_screen.png" id="1_v7jox"]
-[ext_resource type="Script" path="res://scenes/change_to_singlePlayer.gd" id="2_jwoe1"]
+[ext_resource type="Texture2D" uid="uid://c0ci5xfj6c7iv" path="res://ass/end_screen.png" id="1_luw3m"]
+[ext_resource type="Script" path="res://scenes/play_again.gd" id="2_1b5xu"]
+[ext_resource type="FontFile" uid="uid://botdo7sojue6e" path="res://ass/RubikMonoOne-Regular.ttf" id="3_18vnh"]
 [ext_resource type="Script" path="res://Quit.gd" id="3_hsuye"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvb1q"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_062qt"]
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3clm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxcgd"]
 
 [node name="MarginContainer" type="MarginContainer"]
 offset_right = 40.0
@@ -10,7 +26,7 @@ offset_bottom = 40.0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_v7jox")
+texture = ExtResource("1_luw3m")
 
 [node name="Play Again?" type="Button" parent="Background"]
 layout_mode = 1
@@ -19,15 +35,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -50.0
-offset_right = 100.0
-offset_bottom = 50.0
+offset_left = -171.0
+offset_top = -305.0
+offset_right = 171.0
+offset_bottom = -205.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "MAIN SCREEN"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_18vnh")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wvb1q")
+text = " MAIN SCREEN "
 icon_alignment = 1
-script = ExtResource("2_jwoe1")
+script = ExtResource("2_1b5xu")
+
+[node name="LinkButton" type="LinkButton" parent="Background"]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 719.0
+offset_right = 349.0
+offset_bottom = 774.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_18vnh")
+theme_override_font_sizes/font_size = 40
+text = "RULES"
+underline = 1
+uri = "https://github.com/JaceLearnsPython/GoDot"
 
 [node name="Quit" type="Button" parent="Background"]
 layout_mode = 1
@@ -36,13 +69,49 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -898.0
-offset_top = 280.0
-offset_right = -708.0
-offset_bottom = 368.0
+offset_left = -940.0
+offset_top = 278.0
+offset_right = -666.0
+offset_bottom = 372.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Quit"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_18vnh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_062qt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_r3clm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bxcgd")
+text = "QUIT"
 script = ExtResource("3_hsuye")
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -420.0
+offset_top = 82.0
+offset_right = 430.0
+offset_bottom = 207.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_18vnh")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+
+[node name="leaderboard" type="ItemList" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.5
+offset_top = -651.0
+offset_right = 450.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+max_columns = 3
 
 [connection signal="pressed" from="Background/Play Again?" to="Background/Play Again?" method="_on_pressed"]

@@ -14,6 +14,10 @@ config/name="Brot Blitz"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
+[autoload]
+
+ChangeToSinglePlayer="*res://scenes/change_to_singlePlayer.gd"
+
 [display]
 
 window/size/viewport_width=1920
