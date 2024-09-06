@@ -84,7 +84,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_bxcgd")
 text = "QUIT"
 script = ExtResource("3_hsuye")
 
-[node name="Label" type="Label" parent="Background"]
+[node name="Title" type="Label" parent="Background"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -99,19 +99,18 @@ theme_override_fonts/font = ExtResource("3_18vnh")
 theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
 
-[node name="leaderboard" type="ItemList" parent="Background"]
+[node name="board_container" type="GridContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -450.5
-offset_top = -651.0
-offset_right = 450.5
-offset_bottom = -24.0
+offset_left = -418.0
+offset_top = -594.0
+offset_right = 418.0
 grow_horizontal = 2
 grow_vertical = 0
-max_columns = 3
+columns = 2
 
 [connection signal="pressed" from="Background/Play Again?" to="Background/Play Again?" method="_on_pressed"]

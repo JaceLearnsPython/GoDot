@@ -16,6 +16,8 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
 
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+SilentConfig="*res://scenes/silent_config.gd"
 ChangeToSinglePlayer="*res://scenes/change_to_singlePlayer.gd"
 
 [display]
@@ -23,6 +25,10 @@ ChangeToSinglePlayer="*res://scenes/change_to_singlePlayer.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg")
 
 [input]
 

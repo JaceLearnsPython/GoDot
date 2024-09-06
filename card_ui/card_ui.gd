@@ -18,7 +18,7 @@ func _process(delta):
 			
 func card_played():
 		card_num = str($TextureRect.texture.get_path())
-		var played_card = card_num
+		#var played_card = card_num
 		card_num = card_num.split("_")
 		
 		# check if it is an empty stack
@@ -74,7 +74,7 @@ func _on_area_2d_area_entered(area):
 	
 	in_droppable = true
 
-func _on_area_2d_area_exited(area):
+func _on_area_2d_area_exited(_area):
 	in_droppable = false
 
 	

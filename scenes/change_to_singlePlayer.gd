@@ -1,4 +1,6 @@
 extends Button
+# THIS SCRIPT IS GLOBAL. USED BY SINGLEPLAYER TO TELL WHAT MODE IT IS
+# GoDot does not have global variables like most languages do. 
 
 # Set Delay
 # 140 = Easy
@@ -13,13 +15,10 @@ func _on_pressed():
 	time_delay = 0
 	
 	if node.to_string().contains("easy"):
-		print("Easy mode!")
-		time_delay = 140
+		time_delay = 150
 	elif node.to_string().contains("normal"):
-		print("Normal mode!")
-		time_delay = 90
+		time_delay = 100
 	else:
-		print("Hard Mode!")
 		time_delay = 50
 		
 	
