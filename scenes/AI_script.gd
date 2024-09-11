@@ -194,11 +194,18 @@ func check_game_end():
 	#print("AI played total: " + str(ai_total_played))
 	#print("SINGLE played: " + str(blitz_played))
 	
-	if ai_blitz_points >= 10 || blitz_played >= 10:
+	if ai_blitz_points >= 1 || blitz_played >= 10:
 		game_end = true
 
 # called when the game is over.
 func end_the_game():
 	# score the points to the 'main' leaderboard in SW
-	SilentWolf.Scores.save_score("Player", num_of_played, "main")
+	print("Sending Scores...\n")
+	
+	# SW requires disctionary
+	var metadata : Dictionary = {"time" : "PLACEHOLDER FOR TIME"}
+	
+	add_child(SilentWolf.Scores.save_score("Player", num_of_played, "testing", metadata))
+
+	# change to the game_end for displaying score and leaderboards
 	get_tree().change_scene_to_file("res://scenes/game_end.tscn")

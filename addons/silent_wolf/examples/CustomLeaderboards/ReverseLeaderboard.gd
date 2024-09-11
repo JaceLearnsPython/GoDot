@@ -5,7 +5,7 @@ const ScoreItem = preload("res://addons/silent_wolf/Scores/ScoreItem.tscn")
 const SWLogger = preload("res://addons/silent_wolf/utils/SWLogger.gd")
 
 var list_index = 0
-var ld_name = "main"
+var ld_name = "testing"
 
 func _ready():
 	var scores = []
@@ -17,7 +17,7 @@ func _ready():
 	else:
 		# use a signal to notify when the high scores have been returned, and show a "loading" animation until it's the case...
 		add_loading_scores_message()
-		var sw_result = await SilentWolf.Scores.get_high_scores().sw_get_scores_complete
+		var sw_result = await SilentWolf.Scores.get_scores(0, ld_name).sw_get_scores_complete
 		scores = sw_result["scores"]
 		hide_message()
 		render_board(scores)

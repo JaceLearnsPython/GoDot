@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://crpkwka1msxwn"]
+[gd_scene load_steps=10 format=3 uid="uid://crpkwka1msxwn"]
 
+[ext_resource type="Script" path="res://scenes/game_end.gd" id="1_lp7fk"]
 [ext_resource type="Texture2D" uid="uid://c0ci5xfj6c7iv" path="res://ass/end_screen.png" id="1_luw3m"]
 [ext_resource type="Script" path="res://scenes/play_again.gd" id="2_1b5xu"]
 [ext_resource type="FontFile" uid="uid://botdo7sojue6e" path="res://ass/RubikMonoOne-Regular.ttf" id="3_18vnh"]
@@ -20,12 +21,12 @@ draw_center = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxcgd"]
 
-[node name="MarginContainer" type="MarginContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="game_over" type="Node2D"]
+script = ExtResource("1_lp7fk")
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("1_luw3m")
 
 [node name="Play Again?" type="Button" parent="Background"]
@@ -99,18 +100,19 @@ theme_override_fonts/font = ExtResource("3_18vnh")
 theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
 
-[node name="board_container" type="GridContainer" parent="Background"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -418.0
-offset_top = -594.0
-offset_right = 418.0
-grow_horizontal = 2
-grow_vertical = 0
-columns = 2
+[node name="player_name" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 727.0
+offset_top = 390.0
+offset_right = 835.0
+offset_bottom = 413.0
+text = "Player Name: "
+
+[node name="player_score" type="Label" parent="Background"]
+offset_left = 975.0
+offset_top = 387.0
+offset_right = 1083.0
+offset_bottom = 410.0
+text = "score: "
 
 [connection signal="pressed" from="Background/Play Again?" to="Background/Play Again?" method="_on_pressed"]
