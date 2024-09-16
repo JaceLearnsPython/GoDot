@@ -204,8 +204,8 @@ func end_the_game():
 	
 	# SW requires disctionary
 	var metadata : Dictionary = {"time" : "PLACEHOLDER FOR TIME"}
-	
-	add_child(SilentWolf.Scores.save_score("Player", num_of_played, "testing", metadata))
+	print(ChangeToSinglePlayer.player_name)
+	add_child(SilentWolf.Scores.save_score(ChangeToSinglePlayer.player_name, num_of_played, "testing", metadata))
 
 	# change to the game_end for displaying score and leaderboards
 	get_tree().change_scene_to_file("res://scenes/game_end.tscn")

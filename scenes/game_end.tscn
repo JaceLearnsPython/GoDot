@@ -109,6 +109,7 @@ offset_bottom = 413.0
 text = "Player Name: "
 
 [node name="player_score" type="Label" parent="Background"]
+layout_mode = 0
 offset_left = 975.0
 offset_top = 387.0
 offset_right = 1083.0

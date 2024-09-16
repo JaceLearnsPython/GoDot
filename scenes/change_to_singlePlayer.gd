@@ -9,6 +9,7 @@ extends Button
 
 # get what mode and change scene to game
 static var time_delay
+static var player_name
 
 func _on_pressed():
 	var node = get_node(".")

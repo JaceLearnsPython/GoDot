@@ -7,6 +7,7 @@ func _ready():
 	var sw_result = await SilentWolf.Scores.get_scores(0, "testing").sw_get_scores_complete
 	display_scores(sw_result)
 	
+# need to update in case no data is returned
 func display_scores(sw_result):
 	print(sw_result.scores)
 	var score_data = sw_result.scores
