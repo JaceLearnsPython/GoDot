@@ -16,10 +16,9 @@ var deck_index = 0
 
 # timer delay
 var timer = 0.0
-var delay = ChangeToSinglePlayer.time_delay
+var delay = ChangeToSinglePlayer.time_delay # delay is dictated by the mode the user chooses
 
 func _ready():
-	print(delay)
 	ai_deck = make_deckAI() # returns a shuffled deck of cards 1-10 and all 4 suits
 	starting_dealAI()
 	draw()
@@ -31,7 +30,7 @@ func _ready():
 		active_decks.append(node)
 	
 # called every frame to process AI logic
-func _process(delta):
+func _process(_delta):
 	
 	check_game_end()
 	if game_end:
@@ -190,14 +189,27 @@ func update_hand(index):
 	ai_hand[index].texture = tex
 
 # called to check if the game is over / if anyone has plaayed more than 10 blitz cards
-func check_game_end():
-	#print("AI Played: " + str(ai_blitz_points))
-	#print("AI played total: " + str(ai_total_played))
-	#print("SINGLE played: " + str(blitz_played))
-	
-	if ai_blitz_points >= 10 || blitz_played >= 10:
+func check_game_end():	
+	if ai_blitz_points >= 10 || blitz_played >= points_needed_to_win:
 		game_end = true
 
-# called when the game is over. Will need to display points and the score of each player
+# called when the game is over.
 func end_the_game():
+	# score the points to the 'main' leaderboard in SW
+
+	# SW requires disctionary
+	var metadata : Dictionary = {"time" : "TIME TBD"}
+	
+	# check who won and act accordingly
+	if blitz_played >= points_needed_to_win:
+		ChangeToSinglePlayer.player_won = true
+	else:
+		ChangeToSinglePlayer.player_won = false
+	
+	# record the score for player.
+	ChangeToSinglePlayer.score = num_of_played
+	
+	add_child(SilentWolf.Scores.save_score(ChangeToSinglePlayer.player_name, num_of_played, "testing", metadata))
+	
+	# change to the game_end for displaying score and leaderboards
 	get_tree().change_scene_to_file("res://scenes/game_end.tscn")

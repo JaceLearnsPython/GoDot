@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://crpkwka1msxwn"]
+[gd_scene load_steps=10 format=3 uid="uid://crpkwka1msxwn"]
 
+[ext_resource type="Script" path="res://scenes/game_end.gd" id="1_lp7fk"]
 [ext_resource type="Texture2D" uid="uid://c0ci5xfj6c7iv" path="res://ass/end_screen.png" id="1_luw3m"]
 [ext_resource type="Script" path="res://scenes/play_again.gd" id="2_1b5xu"]
 [ext_resource type="FontFile" uid="uid://botdo7sojue6e" path="res://ass/RubikMonoOne-Regular.ttf" id="3_18vnh"]
@@ -20,12 +21,15 @@ draw_center = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxcgd"]
 
-[node name="MarginContainer" type="MarginContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="game_over" type="Node2D"]
+script = ExtResource("1_lp7fk")
+metadata/_edit_horizontal_guides_ = [363.0]
+metadata/_edit_vertical_guides_ = [961.0]
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 2
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 1081.0
 texture = ExtResource("1_luw3m")
 
 [node name="Play Again?" type="Button" parent="Background"]
@@ -84,7 +88,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_bxcgd")
 text = "QUIT"
 script = ExtResource("3_hsuye")
 
-[node name="Label" type="Label" parent="Background"]
+[node name="Title" type="Label" parent="Background"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -98,20 +102,16 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_18vnh")
 theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
+horizontal_alignment = 1
 
-[node name="leaderboard" type="ItemList" parent="Background"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -450.5
-offset_top = -651.0
-offset_right = 450.5
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 0
-max_columns = 3
+[node name="player_score" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 889.0
+offset_top = 353.0
+offset_right = 1008.0
+offset_bottom = 379.0
+theme_override_fonts/font = ExtResource("3_18vnh")
+theme_override_font_sizes/font_size = 20
+text = "score: "
 
 [connection signal="pressed" from="Background/Play Again?" to="Background/Play Again?" method="_on_pressed"]

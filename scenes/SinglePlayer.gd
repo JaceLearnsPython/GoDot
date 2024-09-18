@@ -6,8 +6,8 @@ extends Node2D
 var suits = ["hearts", "diamonds", "clubs", "spades"]
 var values = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "01"]
 var player_deck = []
-var num_of_played = 0
-var blitz_played = 0
+static var num_of_played = 0
+static var blitz_played = 0
 var ai_played = false # used to keep track if an AI just played to stagger moves so
 					  # a deck does not instantly fill.
 var game_end = false
@@ -22,6 +22,8 @@ var player_deck_index = 0
 
 var played_cards = []
 
+# used in AI script to see if the player won
+var points_needed_to_win = 10
 
 const blitz_pile_size = 10 # All players start with 10 cards in the blitz pile
 
@@ -67,8 +69,10 @@ func _process(delta):
 				played_cards.append(played_card)
 				node.texture = load("res://ass/cards/card" + played_card + ".png")
 				
+				# keep track of score
 				if i == 3:
 					blitz_played +=1
+					num_of_played+=1
 					return
 				else:
 					num_of_played+=1
