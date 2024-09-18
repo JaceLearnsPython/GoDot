@@ -190,7 +190,7 @@ func update_hand(index):
 
 # called to check if the game is over / if anyone has plaayed more than 10 blitz cards
 func check_game_end():	
-	if ai_blitz_points >= 1 || blitz_played >= points_needed_to_win:
+	if ai_blitz_points >= 10 || blitz_played >= points_needed_to_win:
 		game_end = true
 
 # called when the game is over.
