@@ -7,11 +7,15 @@ extends Button
 # 90 = Normal
 # 50 = Hard 
 
-# get what mode and change scene to game
+# global variables for game end and tracking scores
 static var time_delay
 static var player_name
+static var score
+static var player_won: bool
+static var played: bool
 
 func _on_pressed():
+	played = true # record we have a name / they played
 	var node = get_node(".")
 	time_delay = 0
 	

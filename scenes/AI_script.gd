@@ -189,23 +189,27 @@ func update_hand(index):
 	ai_hand[index].texture = tex
 
 # called to check if the game is over / if anyone has plaayed more than 10 blitz cards
-func check_game_end():
-	#print("AI Played: " + str(ai_blitz_points))
-	#print("AI played total: " + str(ai_total_played))
-	#print("SINGLE played: " + str(blitz_played))
-	
-	if ai_blitz_points >= 1 || blitz_played >= 10:
+func check_game_end():	
+	if ai_blitz_points >= 1 || blitz_played >= points_needed_to_win:
 		game_end = true
 
 # called when the game is over.
 func end_the_game():
 	# score the points to the 'main' leaderboard in SW
-	print("Sending Scores...\n")
-	
-	# SW requires disctionary
-	var metadata : Dictionary = {"time" : "PLACEHOLDER FOR TIME"}
-	print(ChangeToSinglePlayer.player_name)
-	add_child(SilentWolf.Scores.save_score(ChangeToSinglePlayer.player_name, num_of_played, "testing", metadata))
 
+	# SW requires disctionary
+	var metadata : Dictionary = {"time" : "TIME TBD"}
+	
+	# check who won and act accordingly
+	if blitz_played >= points_needed_to_win:
+		ChangeToSinglePlayer.player_won = true
+	else:
+		ChangeToSinglePlayer.player_won = false
+	
+	# record the score for player.
+	ChangeToSinglePlayer.score = num_of_played
+	
+	add_child(SilentWolf.Scores.save_score(ChangeToSinglePlayer.player_name, num_of_played, "testing", metadata))
+	
 	# change to the game_end for displaying score and leaderboards
 	get_tree().change_scene_to_file("res://scenes/game_end.tscn")

@@ -1,6 +1,9 @@
 extends LineEdit
 
-
+func _ready():
+	if ChangeToSinglePlayer.played:
+		%display_name.text += ChangeToSinglePlayer.player_name
+		get_node(".").queue_free()
 
 func _on_text_submitted(new_text):
 	var get_name_node = get_node(".")

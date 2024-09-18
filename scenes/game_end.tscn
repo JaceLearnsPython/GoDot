@@ -23,10 +23,13 @@ draw_center = false
 
 [node name="game_over" type="Node2D"]
 script = ExtResource("1_lp7fk")
+metadata/_edit_horizontal_guides_ = [363.0]
+metadata/_edit_vertical_guides_ = [961.0]
 
 [node name="Background" type="TextureRect" parent="."]
+offset_top = 1.0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1081.0
 texture = ExtResource("1_luw3m")
 
 [node name="Play Again?" type="Button" parent="Background"]
@@ -99,21 +102,16 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_18vnh")
 theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
-
-[node name="player_name" type="Label" parent="Background"]
-layout_mode = 0
-offset_left = 727.0
-offset_top = 390.0
-offset_right = 835.0
-offset_bottom = 413.0
-text = "Player Name: "
+horizontal_alignment = 1
 
 [node name="player_score" type="Label" parent="Background"]
 layout_mode = 0
-offset_left = 975.0
-offset_top = 387.0
-offset_right = 1083.0
-offset_bottom = 410.0
+offset_left = 889.0
+offset_top = 353.0
+offset_right = 1008.0
+offset_bottom = 379.0
+theme_override_fonts/font = ExtResource("3_18vnh")
+theme_override_font_sizes/font_size = 20
 text = "score: "
 
 [connection signal="pressed" from="Background/Play Again?" to="Background/Play Again?" method="_on_pressed"]

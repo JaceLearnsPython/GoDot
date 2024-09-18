@@ -22,6 +22,8 @@ var player_deck_index = 0
 
 var played_cards = []
 
+# used in AI script to see if the player won
+var points_needed_to_win = 10
 
 const blitz_pile_size = 10 # All players start with 10 cards in the blitz pile
 
