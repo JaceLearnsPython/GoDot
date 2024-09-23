@@ -18,7 +18,6 @@ func _process(delta):
 			
 func card_played():
 		card_num = str($TextureRect.texture.get_path())
-		#var played_card = card_num
 		card_num = card_num.split("_")
 		
 		# check if it is an empty stack

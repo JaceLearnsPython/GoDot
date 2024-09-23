@@ -27,8 +27,6 @@ var points_needed_to_win = 10
 
 const blitz_pile_size = 10 # All players start with 10 cards in the blitz pile
 
-# make a random num generator
-var random = RandomNumberGenerator.new()
 
 # On scene Load
 func _ready():
@@ -70,7 +68,7 @@ func _process(delta):
 				node.texture = load("res://ass/cards/card" + played_card + ".png")
 				
 				# keep track of score
-				if i == 3:
+				if i != 4:
 					blitz_played +=1
 					num_of_played+=1
 					return
@@ -86,9 +84,7 @@ func remove_card(card):
 	
 	var i = player_deck.find(card)
 	if player_deck.find(card) != -1:
-		print("deck contains dupe")
 		player_deck.remove_at(i)
-		print("Removed.\n")
 
 # make the deck, shuffle it, return it.
 func make_deck(deck):
@@ -118,15 +114,18 @@ func starting_deal(player):
 
 # DRAW BUTTON
 func _on_draw_pressed():
-	# need to change to not be random and treat it like a stack
+
+	# check the index
 	if player_deck_index >= player_deck.size() - 1:
 		player_deck_index = 0
 	
+	# update card
 	var card = "res://ass/cards/card" + player_deck[player_deck_index] + ".png"
 	card = load(card)
 	$Player1/DeckCard/TextureRect.texture = card
 	player_deck_index +=3
 
-# Add the options to leave
-func _on_back_button_pressed():
-		get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+func _on_pause_button_pressed():
+	get_tree().paused = true
+	get_node("Paused").visible = true
+	
