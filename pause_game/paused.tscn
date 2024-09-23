@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1btfbuvvx1oi"]
+
+[ext_resource type="FontFile" uid="uid://botdo7sojue6e" path="res://ass/RubikMonoOne-Regular.ttf" id="1_orrfq"]
+[ext_resource type="Script" path="res://pause_game/paused.gd" id="1_rvr14"]
+
+[node name="Paused" type="ColorRect"]
+process_mode = 2
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129412, 0.129412, 0.129412, 0.431373)
+script = ExtResource("1_rvr14")
+metadata/_edit_use_anchors_ = true
+
+[node name="resume" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -20.0
+offset_right = 125.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_orrfq")
+text = "Resume"
+metadata/_edit_use_anchors_ = true
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 34.0
+offset_right = 125.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_orrfq")
+text = "Main Menu"
+
+[connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

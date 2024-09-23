@@ -197,7 +197,7 @@ func check_game_end():
 func end_the_game():
 	# score the points to the 'main' leaderboard in SW
 
-	# SW requires disctionary
+	# SW requires disctionary for metadata
 	var metadata : Dictionary = {"time" : "TIME TBD"}
 	
 	# check who won and act accordingly
