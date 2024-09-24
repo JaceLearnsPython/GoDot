@@ -114,4 +114,13 @@ theme_override_fonts/font = ExtResource("3_18vnh")
 theme_override_font_sizes/font_size = 20
 text = "score: "
 
+[node name="player_time" type="Label" parent="Background"]
+offset_left = 890.0
+offset_top = 376.0
+offset_right = 1094.0
+offset_bottom = 402.0
+theme_override_fonts/font = ExtResource("3_18vnh")
+theme_override_font_sizes/font_size = 20
+text = "Time:"
+
 [connection signal="pressed" from="Background/Play Again?" to="Background/Play Again?" method="_on_pressed"]

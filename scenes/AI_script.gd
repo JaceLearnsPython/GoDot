@@ -18,6 +18,7 @@ var deck_index = 0
 var timer = 0.0
 var delay = ChangeToSinglePlayer.time_delay # delay is dictated by the mode the user chooses
 
+
 func _ready():
 	ai_deck = make_deckAI() # returns a shuffled deck of cards 1-10 and all 4 suits
 	starting_dealAI()
@@ -196,9 +197,14 @@ func check_game_end():
 # called when the game is over.
 func end_the_game():
 	# score the points to the 'main' leaderboard in SW
+	
+	# record the time taken (TBD subtract time paused)
+	var unix_end_time = Time.get_unix_time_from_system()
+	var time_taken = int((unix_end_time - unix_start_time) - 4) # 4 for game start delay
+	ChangeToSinglePlayer.time_taken = time_taken
 
 	# SW requires disctionary for metadata
-	var metadata : Dictionary = {"time" : "TIME TBD"}
+	var metadata : Dictionary = {"time" : time_taken}
 	
 	# check who won and act accordingly
 	if blitz_played >= points_needed_to_win:
@@ -209,6 +215,7 @@ func end_the_game():
 	# record the score for player.
 	ChangeToSinglePlayer.score = num_of_played
 	
+	# add child to keep it in the tree
 	add_child(SilentWolf.Scores.save_score(ChangeToSinglePlayer.player_name, num_of_played, "testing", metadata))
 	
 	# change to the game_end for displaying score and leaderboards

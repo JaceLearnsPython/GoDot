@@ -27,6 +27,7 @@ var points_needed_to_win = 10
 
 const blitz_pile_size = 10 # All players start with 10 cards in the blitz pile
 
+@onready var unix_start_time = Time.get_unix_time_from_system()
 
 # On scene Load
 func _ready():
@@ -129,3 +130,4 @@ func _on_pause_button_pressed():
 	get_tree().paused = true
 	get_node("Paused").visible = true
 	
+

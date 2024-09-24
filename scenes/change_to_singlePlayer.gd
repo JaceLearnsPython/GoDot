@@ -13,6 +13,7 @@ static var player_name
 static var score
 static var player_won: bool
 static var played: bool
+static var time_taken: int
 
 func _on_pressed():
 	played = true # record we have a name / they played
