@@ -23,8 +23,8 @@ draw_center = false
 
 [node name="game_over" type="Node2D"]
 script = ExtResource("1_lp7fk")
-metadata/_edit_horizontal_guides_ = [363.0]
-metadata/_edit_vertical_guides_ = [961.0]
+metadata/_edit_horizontal_guides_ = [538.0]
+metadata/_edit_vertical_guides_ = [-212.0]
 
 [node name="Background" type="TextureRect" parent="."]
 offset_top = 1.0
@@ -40,9 +40,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -171.0
-offset_top = -305.0
+offset_top = -104.0
 offset_right = 171.0
-offset_bottom = -205.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -105,22 +105,52 @@ text = "GAME OVER"
 horizontal_alignment = 1
 
 [node name="player_score" type="Label" parent="Background"]
-layout_mode = 0
-offset_left = 889.0
-offset_top = 353.0
-offset_right = 1008.0
-offset_bottom = 379.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.5
+offset_top = 228.0
+offset_right = 150.5
+offset_bottom = 291.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_18vnh")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 50
 text = "score: "
 
 [node name="player_time" type="Label" parent="Background"]
-offset_left = 890.0
-offset_top = 376.0
-offset_right = 1094.0
-offset_bottom = 402.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -107.5
+offset_top = 300.0
+offset_right = 107.5
+offset_bottom = 363.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_18vnh")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 50
 text = "Time:"
 
+[node name="view_leaderboards" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = 4.0
+offset_right = 171.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_18vnh")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wvb1q")
+text = "LEADERBOARDS"
+icon_alignment = 1
+
 [connection signal="pressed" from="Background/Play Again?" to="Background/Play Again?" method="_on_pressed"]
+[connection signal="pressed" from="Background/view_leaderboards" to="Background/Play Again?" method="_on_view_leaderboards_pressed"]
