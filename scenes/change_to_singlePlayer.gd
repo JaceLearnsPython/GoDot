@@ -14,6 +14,7 @@ static var score
 static var player_won: bool
 static var played: bool
 static var time_taken: int
+static var mode
 
 func _on_pressed():
 	played = true # record we have a name / they played
@@ -22,10 +23,12 @@ func _on_pressed():
 	
 	if node.to_string().contains("easy"):
 		time_delay = 150
+		mode = "Easy"
 	elif node.to_string().contains("normal"):
 		time_delay = 100
+		mode = "Normal"
 	else:
 		time_delay = 50
-		
+		mode = "Hard"
 	
 	get_tree().change_scene_to_file("res://scenes/SinglePlayer.tscn")

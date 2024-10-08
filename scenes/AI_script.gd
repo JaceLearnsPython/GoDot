@@ -136,11 +136,17 @@ func play_card():
 			play_card_on_deck(j, ai_hand[j], active_decks[i])
 			if played:
 				update_hand(j)
+				delay_ai()
 				ai_total_played += 1
 				# make sure to count every non deck card as a point towards the blitz points.
 				if j != 4:
 					ai_blitz_points += 1
 				return
+
+# function to delay the AI between moves so make them more realistic.
+func delay_ai():
+	for i in range(delay): # using delay based on mode
+		pass
 
 # curr_ad = the current active deck card
 # hand_card is the hand card node
@@ -204,7 +210,7 @@ func end_the_game():
 	ChangeToSinglePlayer.time_taken = time_taken
 
 	# SW requires disctionary for metadata
-	var metadata : Dictionary = {"time" : time_taken}
+	var metadata : Dictionary = {"time" : time_taken, "mode" : ChangeToSinglePlayer.mode}
 	
 	# check who won and act accordingly
 	if blitz_played >= points_needed_to_win:
