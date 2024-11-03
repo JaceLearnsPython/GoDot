@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b88dv4vkljkq3"]
+[gd_scene load_steps=10 format=3 uid="uid://b88dv4vkljkq3"]
 
 [ext_resource type="Texture2D" uid="uid://0qkpb0yht1fv" path="res://ass/poker_background.jpg" id="1_irmfp"]
 [ext_resource type="Script" path="res://scenes/SinglePlayer.gd" id="1_ruqbv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dda64qmj6m6ts" path="res://card_collision/card_collision.tscn" id="5_xtag3"]
 [ext_resource type="FontFile" uid="uid://botdo7sojue6e" path="res://ass/RubikMonoOne-Regular.ttf" id="5_ycoew"]
 [ext_resource type="PackedScene" uid="uid://b1btfbuvvx1oi" path="res://pause_game/paused.tscn" id="8_lyjkx"]
+[ext_resource type="PackedScene" uid="uid://cjuologohrf2q" path="res://game_delay/game_delay.tscn" id="9_5ldmb"]
 
 [node name="SinglePlayer" type="Node2D"]
 position = Vector2(0, -5)
@@ -265,6 +266,13 @@ texture = ExtResource("5_f35wx")
 [node name="Paused" parent="." instance=ExtResource("8_lyjkx")]
 offset_right = 1920.0
 offset_bottom = 1100.0
+
+[node name="GameDelay" parent="." instance=ExtResource("9_5ldmb")]
+position = Vector2(960, 514)
+
+[node name="Timers" type="Timer" parent="."]
+process_mode = 1
+autostart = true
 
 [connection signal="pressed" from="Draw" to="." method="_on_draw_pressed"]
 [connection signal="pressed" from="pause_button" to="." method="_on_pause_button_pressed"]
