@@ -9,7 +9,7 @@ func _ready():
 func display_data():
 	
 	# get data
-	var sw_result = await SilentWolf.Scores.get_scores(0, "test").sw_get_scores_complete
+	var sw_result = await SilentWolf.Scores.get_scores(0, "main").sw_get_scores_complete
 	print(sw_result.scores)
 	var score_data: Array = sw_result.scores
 	

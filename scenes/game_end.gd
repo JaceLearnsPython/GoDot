@@ -15,7 +15,7 @@ func _ready():
 	else:
 		title_node.text = ChangeToSinglePlayer.player_name + " Lost!"
 	
-	# change the score regardless of who won	
+	# change the score regardless of who won
 	var str_score = ChangeToSinglePlayer.score
 	var str_time_taken = ChangeToSinglePlayer.time_taken
 	str_score = str(str_score)

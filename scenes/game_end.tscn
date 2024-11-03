@@ -149,7 +149,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_18vnh")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_wvb1q")
-text = "LEADERBOARDS"
+text = "LEADERBOARD"
 icon_alignment = 1
 
 [connection signal="pressed" from="Background/Play Again?" to="Background/Play Again?" method="_on_pressed"]
