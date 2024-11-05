@@ -5,7 +5,7 @@ to create an online version of this game.
 
 # Rules
 
-- All Players have a "Blitz" pile with 10 cards stacked and only the top card is accessible and visible.
+- All Players have a "Blitz" pile with 10 cards stacked and only the top card is accessible and visible. The cards left in this stack count against your total score. If you play 0 blitz cards and 5 cards from your deck, you would score -5 (5-10).
 
 ![image](https://github.com/user-attachments/assets/67ffb091-18b3-48f6-af38-0c268098e848)
 
@@ -16,6 +16,7 @@ to create an online version of this game.
 
 - All players have a draw pile with the remaining 27 cards that they can draw from at any time.
 - This deck does *NOT* count towards the Blitz score.
+- You can click the "DRAW" button or press "D" on your keyboard to draw.
 
 ![image](https://github.com/user-attachments/assets/1161bc98-1a03-49c2-9489-5fb38863bd13)
 
