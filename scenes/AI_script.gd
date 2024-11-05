@@ -218,8 +218,15 @@ func end_the_game():
 	else:
 		ChangeToSinglePlayer.player_won = false
 	
+	# since we are just subtracting 1 in the singleplayer script, we need to make sure we don't go negative
+	# as that would not make sense for the rules of the game
+	if blitz_pile_size < 0:
+		blitz_pile_size = 0
+	
 	# record the score for player.
-	ChangeToSinglePlayer.score = num_of_played - (10 - blitz_played) # recall the -1 for each card left in blitz pile rule
+	# remember that the final score is counted against the remaining cards in the blitz pile @blitz_pile_size.
+	# i.e. If you play all cards in your blitz pile, you would get total score - 0
+	ChangeToSinglePlayer.score = num_of_played - (blitz_pile_size - blitz_played) 
 	
 	# add child to keep it in the tree
 	add_child(SilentWolf.Scores.save_score(ChangeToSinglePlayer.player_name, ChangeToSinglePlayer.score, "main", metadata))
