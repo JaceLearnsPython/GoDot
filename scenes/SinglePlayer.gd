@@ -51,6 +51,9 @@ func _ready():
 	
 # Game Logic and called every frame
 func _process(delta):
+	
+	if Input.is_action_just_pressed("draw"):
+		_on_draw_pressed()
 
 	# Handle dragging
 	for i  in len(hand):

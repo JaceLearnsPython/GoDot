@@ -219,10 +219,10 @@ func end_the_game():
 		ChangeToSinglePlayer.player_won = false
 	
 	# record the score for player.
-	ChangeToSinglePlayer.score = num_of_played
+	ChangeToSinglePlayer.score = num_of_played - (10 - blitz_played) # recall the -1 for each card left in blitz pile rule
 	
 	# add child to keep it in the tree
-	add_child(SilentWolf.Scores.save_score(ChangeToSinglePlayer.player_name, num_of_played, "main", metadata))
+	add_child(SilentWolf.Scores.save_score(ChangeToSinglePlayer.player_name, ChangeToSinglePlayer.score, "main", metadata))
 	
 	# change to the game_end for displaying score and leaderboards
 	get_tree().change_scene_to_file("res://scenes/game_end.tscn")
