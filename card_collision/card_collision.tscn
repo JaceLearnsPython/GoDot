@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dda64qmj6m6ts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfqls"]
-size = Vector2(115, 154)
+size = Vector2(124, 166)
 
 [node name="deck" type="Area2D" groups=["dropable"]]
 
@@ -11,7 +11,7 @@ offset_bottom = 140.0
 color = Color(0.964706, 0.866667, 0.898039, 0.129412)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(48.5, 70)
+position = Vector2(48, 69)
 shape = SubResource("RectangleShape2D_nfqls")
 
 [node name="TextureRect" type="TextureRect" parent="."]
