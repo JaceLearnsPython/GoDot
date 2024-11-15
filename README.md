@@ -1,3 +1,6 @@
+## Note
+The leaderboard uses an API key generated from the [SilentWolf](https://silentwolf.com/) Plugin for Godot. If you download this project, you will need to generate an API key and create a silent wolf config file. It is not necessary to play the game but if you want to store scores, it is setup to do so.
+
 # Brot Blitz
 This project is a card game based on Dutch Blitz, a game created by a Dutch immigrant in the 20th century. I have played the game with friends and family since I was a child and I have
 always wanted to play this game online as I can't play it with others as much as I want to. It is my hope I can utilize GoDot
